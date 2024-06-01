@@ -38,6 +38,45 @@ const httpParcelas = {
         const parcela = await Parcelas.findById(_id);
         res.json(parcela);
     }
+
+    putParcelasActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const parcelas = await Parcelas.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ parcelas }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putParcelasDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const parcelas = await Parcelas.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ parcelas }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+            // listar Parcelas activas
+     async getParcelasActivas(req, res) {
+        try {
+            const parcelas = await Parcelas.find({ estado: 1 });
+            res.json({ parcelas });
+        } catch (error) {
+              res.status(500).json({ error: error.message });
+          }
+       },
+
+     // listar Parcelas inactivas
+    async getParcelasInactivas(req, res) {
+      try {
+            const parcelas = await Parcelas.find({ estado: 0 });
+             res.json({ parcelas });
+         } catch (error) {
+              res.status(500).json({ error: error.message });
+          }
+      },
 };
 
 export default httpParcelas

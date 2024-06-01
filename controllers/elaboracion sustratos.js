@@ -38,6 +38,43 @@ const httpElaboracionSustratos = {
         const elaboracionSustratos = await ElaboracionSustratos.findById(_id);
         res.json(elaboracionSustratos);
     },
+
+    putElaboracionSustratosActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const elaboracionSustratos = await ElaboracionSustratos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ elaboracionSustratos }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putElaboracionSustratosDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const elaboracionSustratos = await ElaboracionSustratos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ elaboracionSustratos }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+
+    getElaboracionSustratosActivos: async (req, res)=> {
+        try {
+            const elaboracionSustratos = await ElaboracionSustratos.find({ estado: 1 });
+            res.json({ elaboracionSustratos });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    getElaboracionSustratosInactivos: async (req, res)=> {
+        try {
+            const elaboracionSustratos = await ElaboracionSustratos.find({ estado: 0 });
+            res.json({ elaboracionSustratos });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
 };
 
 export default httpElaboracionSustratos

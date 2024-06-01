@@ -37,7 +37,46 @@ const httpSiembras = {
         const _id = req.params.id;
         const siembra = await Siembras.findById(_id);
         res.json(siembra);
-    }
+    },
+
+    putSiembrasActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const siembras = await Siembras.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ siembras }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putSiembrasDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const siembras = await Siembras.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ siembras }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+
+    async getSiembrasActivas(req, res) {
+        try {
+            const siembras= await Siembras.find({ estado: 1 });
+            res.json({ siembras });
+        } catch (error) {
+              res.status(500).json({ error: error.message });
+          }
+       },
+
+     // listar Siembras inactivas
+    async getSiembrasInactivas(req, res) {
+      try {
+            const siembras = await Siembras.find({ estado: 0 });
+             res.json({ siembras });
+         } catch (error) {
+              res.status(500).json({ error: error.message });
+          }
+      },
 };
 
 export default httpSiembras

@@ -37,7 +37,43 @@ const httpProducciones = {
         const _id = req.params.id;
         const produccion = await Produccion.findById(_id);
         res.json(produccion);
-    }
+    },
+
+    putProduccionesActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const produccion = await Produccion.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ produccion }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putProduccionesDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const produccion = await Produccion.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ produccion }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+    getProduccionesActivos: async (req, res)=> {
+        try {
+            const produccion = await Produccion.find({ estado: 1 });
+            res.json({ produccion });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    getProduccionesInactivos: async (req, res)=> {
+        try {
+            const produccion = await Produccion.find({ estado: 0 });
+            res.json({ produccion });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
 };
 
 export default httpProducciones

@@ -8,8 +8,8 @@ const httpCompradores = {
     },
 
     getCompradoresID: async (req, res) => {
-        const { id } = req.params
-        const compradores = await Compradores.findById(id)
+        const _id = req.params
+        const compradores = await Compradores.findById(_id)
         res.json({compradores})
     },
 
@@ -32,6 +32,43 @@ const httpCompradores = {
         }
         catch (error) {
             res.status(400).json({ error: "No se pudo modificar el registro" })
+        }
+    },
+
+    putCompradoresActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const compradores = await Compradores.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ compradores }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putCompradoresDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const compradores = await Compradores.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ compradores }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+
+    getCompradoresActivos: async (req, res)=> {
+        try {
+            const compradores = await Compradores.find({ estado: 1 });
+            res.json({ compradores });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    getCompradoresInactivos: async (req, res)=> {
+        try {
+            const compradores = await Compradores.find({ estado: 0 });
+            res.json({ compradores });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
         }
     },
 

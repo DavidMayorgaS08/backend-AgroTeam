@@ -37,7 +37,46 @@ const httpMantenimientos = {
         const _id = req.params.id;
         const mantenimiento = await Mantenimientos.findById(_id);
         res.json(mantenimiento);
-    }
+    },
+
+    putMantenimientosActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const mantenimiento = await Mantenimientos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ mantenimiento }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putMantenimientosDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const mantenimiento = await Mantenimientos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ mantenimiento }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+
+        // listar Mantenimientos activas
+        async getMantenimientosActivas(req, res) {
+            try {
+                const mantenimientos = await Mantenimientos.find({ estado: 1 });
+                res.json({ mantenimientos });
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        },
+        // listar Mantenimientos inactivas
+        async getMantenimientosInactivas(req, res) {
+            try {
+                const mantenimientos = await Mantenimientos.find({ estado: 0 });
+                res.json({ mantenimientos });
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        },
 };
 
 export default httpMantenimientos

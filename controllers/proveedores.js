@@ -9,8 +9,8 @@ const httpProveedores = {
 
 
     getProveedoresID: async(req, res) => {
-        const {id} = req.params 
-        const proveedor = await Proveedores.findById(id)
+        const _id = req.params 
+        const proveedor = await Proveedores.findById(_id)
         res.jos({proveedor})
     },
 
@@ -29,13 +29,48 @@ const httpProveedores = {
         const body = req.body;
         try {
             const proveedor = await Proveedores.findByIdAndUpdate(_id, body, {new: true});
-            res.json();
+            res.json(proveedor);
         }
         catch (error) {
             res.status(500).json({ error: "No se pudo modificar el registro" });
         }
     },
 
+    putProveedoresActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const proveedores = await Proveedores.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ proveedores }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putProveedoresDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const proveedores = await Proveedores.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ proveedores }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+    getProveedoresActivos: async (req, res)=> {
+        try {
+            const proveedores = await Proveedores.find({ estado: 1 });
+            res.json({ proveedores });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    getProveedoresInactivos: async (req, res)=> {
+        try {
+            const proveedores = await Proveedores.find({ estado: 0 });
+            res.json({ proveedores });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
 }
 
 export default httpProveedores

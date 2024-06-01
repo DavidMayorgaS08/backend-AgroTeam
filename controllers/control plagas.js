@@ -38,6 +38,43 @@ const httpControlPlagas = {
         const controlPlagas = await ControlPlagas.findById(_id);
         res.json(controlPlagas);
     },
+
+    putControlPlagasActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const controlPlagas = await ControlPlagas.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ controlPlagas }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putControlPlagasDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const controlPlagas = await ControlPlagas.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ controlPlagas }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+
+    getControlPlagasActivos: async (req, res)=> {
+        try {
+            const controlPlagas = await ControlPlagas.find({ estado: 1 });
+            res.json({ controlPlagas });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    getControlPlagasInactivos: async (req, res)=> {
+        try {
+            const controlPlagas = await ControlPlagas.find({ estado: 0 });
+            res.json({ controlPlagas });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
 };
 
 export default httpControlPlagas

@@ -9,8 +9,8 @@ const httpProcesos = {
 
 
     getProcesosID: async(req, res) => {
-        const {id} = req.params 
-        const proceso = await Procesos.findById(id)
+        const _id = req.params 
+        const proceso = await Procesos.findById(_id)
         res.jos({proceso})
     },
 
@@ -29,10 +29,46 @@ const httpProcesos = {
         const body = req.body;
         try {
             const proceso = await Procesos.findByIdAndUpdate(_id, body, {new: true});
-            res.json();
+            res.json(proceso);
         }
         catch (error) {
             res.status(500).json({ error: "No se pudo modificar el registro" });
+        }
+    },
+    putProcesosActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const proceso = await Procesos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ proceso }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putProcesosDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const proceso = await Procesos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ proceso }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+    
+    getProcesosActivos: async (req, res)=> {
+        try {
+            const proceso = await Procesos.find({ estado: 1 });
+            res.json({ proceso });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    getProcesosInactivos: async (req, res)=> {
+        try {
+            const proceso = await Procesos.find({ estado: 0 });
+            res.json({ proceso });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
         }
     },
 

@@ -8,8 +8,8 @@ const httpSemillas = {
     },
 
     getSemillasID: async (req, res) => {
-        const { id } = req.params
-        const semillas = await Semillas.findById(id)
+        const _id = req.params
+        const semillas = await Semillas.findById(_id)
         res.json({semillas})
     },
 
@@ -35,5 +35,34 @@ const httpSemillas = {
         }
     },
 
+    putSemillasActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const semillas = await Semillas.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ semillas }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putSemillasDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const semillas = await Semillas.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ semillas }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+
+    getSemillasActivas: async (req, res) => {
+        const semillas = await Semillas.find({estado: 1})
+        res.json({semillas})
+    },
+
+    getSemillasInactivas: async (req, res) => {
+        const semillas = await Semillas.find({estado: 0})
+        res.json({semillas})
+    }
 }
 export default httpSemillas

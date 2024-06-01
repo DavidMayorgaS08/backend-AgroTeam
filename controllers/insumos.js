@@ -8,8 +8,8 @@ const httpInsumos = {
     },
 
     getInsumosID: async (req, res) => {
-        const { id } = req.params
-        const insumos = await Insumos.findById(id)
+        const _id = req.params
+        const insumos = await Insumos.findById(_id)
         res.json({insumos})
     },
 
@@ -32,6 +32,42 @@ const httpInsumos = {
         }
         catch (error) {
             res.status(400).json({ error: "No se pudo modificar el registro" })
+        }
+    },
+
+    putInsumosActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const insumos = await Insumos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ insumos }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putInsumosDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const insumos = await Insumos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ insumos }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+    getInsumosActivos: async (req, res)=> {
+        try {
+            const insumos = await Insumos.find({ estado: 1 });
+            res.json({ insumos });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    getInsumosInactivos: async (req, res)=> {
+        try {
+            const insumos = await Insumos.find({ estado: 0 });
+            res.json({ insumos });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
         }
     },
 

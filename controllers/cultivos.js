@@ -38,6 +38,42 @@ const httpCultivos = {
         const cultivo = await Cultivos.findById(_id);
         res.json(cultivo);
     },
+    
+    putCultivosActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const cultivo = await Cultivos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ cultivo }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putCultivosDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const cultivo = await Cultivos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ cultivo }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+    getCultivosActivos: async (req, res)=> {
+        try {
+            const cultivo = await Cultivos.find({ estado: 1 });
+            res.json({ cultivo });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    getCultivosInactivos: async (req, res)=> {
+        try {
+            const cultivo = await Cultivos.find({ estado: 0 });
+            res.json({ cultivo });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
 };
 
 export default httpCultivos

@@ -38,6 +38,46 @@ const httpRiegos = {
         const riego = await Riegos.findById(_id);
         res.json(riego);
     },
+    // activar riego
+    async activarRiegos(req, res) {
+        const _id = req.params.id;
+        try {
+            const riego = await Riegos.findByIdAndUpdate(_id, { estado: 1 }, { new: true });
+            res.json(riego);
+        }
+        catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    // desactivar riego
+    async desactivarRiegos(req, res) {
+        const _id = req.params.id;
+        try {
+            const riego = await Riegos.findByIdAndUpdate(_id, { estado: 0 }, { new: true });
+            res.json(riego);
+        }
+        catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    // listar riegos activos
+    async getRiegosActivos(req, res) {
+        try {
+            const riego = await Riegos.find({ estado: 1 });
+            res.json({ riego });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    // listar riegos inactivos
+    async getRiegosInactivos(req, res) {
+        try {
+            const riego = await Riegos.find({ estado: 0 });
+            res.json({ riego });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 };
 
 export default httpRiegos

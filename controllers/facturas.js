@@ -37,7 +37,46 @@ const httpFacturas = {
         const _id = req.params.id;
         const factura = await Factura.findById(_id);
         res.json(factura);
-    }
+    },
+    putFacturaActivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const factura = await Factura.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
+            res.json({ factura }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo activar" });
+        }      
+    },
+
+    putFacturaDesactivar: async (req, res) => {
+        const _id = req.params
+        try {
+            const factura = await Factura.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
+            res.json({ factura }) 
+        } catch (error) {
+            res.status(500).json({ error: "No se pudo desactivar" });
+        }      
+    },
+
+        // listar Factura activos
+        async getFacturaActivos(req, res) {
+            try {
+                const factura = await Factura.find({ estado: 1 });
+                res.json({ factura });
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        },
+        // listar Factura inactivos
+        async getFacturaInactivos(req, res) {
+            try {
+                const factura = await Factura.find({ estado: 0 });
+                res.json({ factura });
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        },
+
 };
 
 export default httpFacturas

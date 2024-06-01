@@ -38,6 +38,46 @@ const httpAnalisisSuelos = {
         const analisisSuelo = await AnalisisSuelo.findById(_id);
         res.json(analisisSuelo);
     },
+    // activar analisis de suelo
+    async activarAnalisisSuelos(req, res) {
+        const _id = req.params.id;
+        try {
+            const analisisSuelo = await AnalisisSuelo.findByIdAndUpdate(_id, { estado: 1 }, { new: true });
+            res.json(analisisSuelo);
+        }
+        catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    // desactivar analisis de suelo
+    async desactivarAnalisisSuelos(req, res) {
+        const _id = req.params.id;
+        try {
+            const analisisSuelo = await AnalisisSuelo.findByIdAndUpdate(_id, { estado: 0 }, { new: true });
+            res.json(analisisSuelo);
+        }
+        catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    // listar todos los analisis de suelo activos
+    async getAnalisisSuelosActivos(req, res) {
+        try {
+            const analisisSuelo = await AnalisisSuelo.find({ estado: 1 });
+            res.json({ analisisSuelo });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    // listar todos los analisis de suelo inactivos
+    async getAnalisisSuelosInactivos(req, res) {
+        try {
+            const analisisSuelo = await AnalisisSuelo.find({ estado: 0 });
+            res.json({ analisisSuelo });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 };
 
 export default httpAnalisisSuelos

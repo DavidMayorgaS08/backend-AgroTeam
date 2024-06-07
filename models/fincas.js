@@ -8,6 +8,8 @@ const FincasSchema = new mongoose.Schema({
     ubicacionGeografica: {type: String, required: true},
     limitesPredios: {type: String, required: true},
     area: {type: Number, required: true},
+    ciudad: {type: String, required: true},
+    departamento: {type: String, required: true},
     estado: {type: Number, required: true}
 });
 

@@ -74,6 +74,17 @@ const httpCultivos = {
             res.status(500).json({ error: error.message });
         }
     },
+       // Listar cultivos por tipo
+    async getCultivosPorTipo(req, res) {
+      const tipo = req.params.tipo;
+      try {
+         const cultivo = await Cultivos.find({ tipo: tipo });
+            res.json({ cultivo });
+      } catch (error) {
+         res.status(500).json({ error: error.message });
+      }
+          },
+
 };
 
 export default httpCultivos

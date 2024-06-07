@@ -1,4 +1,4 @@
-import Fincas from '../models/fincas.js';
+ import Fincas from '../models/fincas.js';
 
 const httpFincas = {
     // crear una finca
@@ -78,6 +78,6 @@ const httpFincas = {
             res.status(500).json({ error: error.message });
         }
     },
+    
 };
-
 export default httpFincas

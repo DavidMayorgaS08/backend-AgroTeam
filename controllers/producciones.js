@@ -74,6 +74,27 @@ const httpProducciones = {
             res.status(500).json({ error: error.message });
         }
     },
+    // listar entre fechas
+    async getProduccionesFechas(req, res) {
+        const fecha1 = req.params.fecha1;
+        const fecha2 = req.params.fecha2;
+        try {
+            const produccion = await Produccion.find({ fecha: { $gte: fecha1, $lte: fecha2 } });
+            res.json({ produccion });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+    // listar por cultivo
+    async getProduccionesCultivo(req, res) {
+        const id_cultivo = req.params.id_cultivo;
+        try {
+            const produccion = await Produccion.find({ id_cultivo: id_cultivo });
+            res.json({ produccion });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 };
 
 export default httpProducciones

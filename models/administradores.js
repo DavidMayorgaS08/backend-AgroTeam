@@ -7,6 +7,7 @@ const AdministradoresSchema = new mongoose.Schema({
     email: {type: String, required: true},
     municipio: {type: String, required: true},
     password: {type: String, required: true},
+    rol: {type: String, required: true},
     estado: {type: Number, required: true}
 });
 

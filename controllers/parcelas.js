@@ -16,7 +16,7 @@ const httpParcelas = {
         const _id = req.params.id;
         const body = req.body;
         try {
-            const parcela = await Parcelas.findByIdAndUpdate(_id, body, {new: true});
+            const parcela = await Parcelas.findByIdAndUpdate(_id, body, { new: true });
             res.json(parcela);
         }
         catch (error) {
@@ -43,40 +43,81 @@ const httpParcelas = {
         const _id = req.params
         try {
             const parcelas = await Parcelas.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
-            res.json({ parcelas }) 
+            res.json({ parcelas })
         } catch (error) {
             res.status(500).json({ error: "No se pudo activar" });
-        }      
+        }
     },
 
     putParcelasDesactivar: async (req, res) => {
         const _id = req.params
         try {
             const parcelas = await Parcelas.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
-            res.json({ parcelas }) 
+            res.json({ parcelas })
         } catch (error) {
             res.status(500).json({ error: "No se pudo desactivar" });
-        }      
+        }
     },
-            // listar Parcelas activas
-     async getParcelasActivas(req, res) {
+    // listar Parcelas activas
+    async getParcelasActivas(req, res) {
         try {
             const parcelas = await Parcelas.find({ estado: 1 });
             res.json({ parcelas });
         } catch (error) {
-              res.status(500).json({ error: error.message });
-          }
-       },
+            res.status(500).json({ error: error.message });
+        }
+    },
 
-     // listar Parcelas inactivas
+    // listar Parcelas inactivas
     async getParcelasInactivas(req, res) {
-      try {
+        try {
             const parcelas = await Parcelas.find({ estado: 0 });
-             res.json({ parcelas });
-         } catch (error) {
-              res.status(500).json({ error: error.message });
-          }
-      },
+            res.json({ parcelas });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+
+    //listar por tipo de cultivo
+    async getParcelasPorTipoCultivo(req, res) {
+        const cultivoActual = req.params.cultivoActual;
+        try {
+            const parcelas = await Parcelas.find({ cultivoActual: cultivoActual });
+            res.json({ parcelas });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+    //listar entre rango de fecha
+    async getParcelasPorRangoFecha(req, res) {
+        const { fechaInicio, fechaFin } = req.query;
+
+        try {
+            const fechaInicioDate = new Date(fechaInicio);
+            const fechaFinDate = new Date(fechaFin);
+
+            const parcelas = await Parcelas.find({
+                fechaCreacion: {
+                    $gte: fechaInicioDate,
+                    $lte: fechaFinDate
+                }
+            });
+
+            res.json({ parcelas });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
+    //listar asistente
+    async getParcelasPorAsistente(req, res) {
+        const asistenteTecnico = req.params.asistenteTecnico;
+        try {
+            const parcelas = await Parcelas.find({ asistenteTecnico: asistenteTecnico });
+            res.json({ parcelas });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
 };
 
 export default httpParcelas

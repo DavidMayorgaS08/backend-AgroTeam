@@ -9,7 +9,6 @@ const CompradoresSchema = new mongoose.Schema({
     cantidad: {type: Number, required: true},
     NroGuiaTransporte: {type: String, required: true},
     NroLoteComecial: {type: String, required: true},
-    id_ingreso: {type: mongoose.Schema.Types.ObjectId, ref: 'Ingresos', required: true},
     estado: {type: Number, required: true}
 });
 

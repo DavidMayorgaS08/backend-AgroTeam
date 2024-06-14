@@ -7,7 +7,6 @@ const httpClimas = {
         res.json({clima})
     },
 
-
     getClimasID: async(req, res) => {
         const _id = req.params 
         const clima = await Climas.findById(_id)
@@ -71,6 +70,25 @@ const httpClimas = {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
+    },
+    //listar entre fechas 
+    getClimasFecha: async (req, res) => {
+        const fecha = req.params.fecha
+        const fecha2 = req.params.fecha2
+        const clima = await Climas.find({fecha: {$gte: fecha, $lte: fecha2}})
+        res.json({clima})
+    },
+    //listar proemdio de temperatura
+    getClimasTemperatura: async (req, res) => {
+        const temperatura = req.params.temperatura
+        const clima = await Climas.find({temperatura: {$gte: temperatura}})
+        res.json({clima})
+    },
+    //listar por tipo de clima
+    getClimasTipo: async (req, res) => {
+        const tipoClima = req.params.tipoClima
+        const clima = await Climas.find({tipoClima: tipoClima})
+        res.json({clima})
     },
 }
 

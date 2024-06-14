@@ -75,6 +75,46 @@ const httpNominas = {
             res.status(500).json({ error: error.message });
         }
     },
+        // Listar nóminas entre fechas
+        async getNominasEntreFechas(req, res) {
+            const { fechaInicio, fechaFin } = req.query;
+            try {
+                const nominas = await Nominas.find({
+                    fecha: {
+                        $gte: new Date(fechaInicio),
+                        $lte: new Date(fechaFin)
+                    }
+                });
+                res.json({ nominas });
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        },
+            // Obtener la nomina de un empleado por ID de empleado
+    async getNominaPorEmpleado(req, res) {
+        const idEmpleado = req.params.id;
+        try {
+            // Buscar la nómina del empleado por su ID
+            const nomina = await Nominas.findOne({ id_empleado: idEmpleado });
+            if (!nomina) {
+                return res.status(404).json({ error: 'No se encontró la nomina para este empleado' });
+            }
+            res.json({ nomina });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
+        // Listar el total de todas las nominas
+        async getTotalNominas(req, res) {
+            try {
+                const totalNominas = await Nominas.aggregate([
+                    { $group: { _id: null, total: { $sum: "$valor" } } }
+                ]);
+                res.json({ totalNominas: totalNominas[0].total });
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        },
 };
 
 export default httpNominas

@@ -71,7 +71,19 @@ const httpCompradores = {
             res.status(500).json({ error: error.message });
         }
     },
-
+    // listar entre fechas
+    getCompradoresFecha: async (req, res) => {
+        const fechaI = req.params.fechaI
+        const fechaF = req.params.fechaF
+        const compradores = await Compradores.find({$and:[{createdAt:{$gte: fechaI, $lte: fechaF}}]})
+        res.json({compradores})
+    },
+    // listar por nombre de comprador
+    getCompradoresNombre: async (req, res) => {
+        const nombre = req.params.nombre
+        const compradores = await Compradores.find({nombre: nombre})
+        res.json({compradores})
+    },
 }
 export default httpCompradores 
 

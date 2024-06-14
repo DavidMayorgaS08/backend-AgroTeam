@@ -63,6 +63,12 @@ const httpSemillas = {
     getSemillasInactivas: async (req, res) => {
         const semillas = await Semillas.find({estado: 0})
         res.json({semillas})
+    },
+    // listar por id de proveedor
+    async getSemillasProveedor(req, res) {
+        const _id = req.params.id;
+        const semillas = await Semillas.find({proveedor: _id});
+        res.json(semillas);
     }
 }
 export default httpSemillas

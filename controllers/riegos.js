@@ -77,6 +77,17 @@ const httpRiegos = {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
+    },
+    // listar entre fechas 
+    async getRiegosFecha(req, res) {
+        const fecha1 = req.params.fecha1;
+        const fecha2 = req.params.fecha2;
+        try {
+            const riego = await Riegos.find({ fecha: { $gte: fecha1, $lte: fecha2 } });
+            res.json({ riego });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
     }
 };
 

@@ -72,7 +72,17 @@ const httpFertilizaciones = {
             res.status(500).json({ error: error.message });
         }
     },
-
+    // listar entre fechas
+    getFertilizacionesEntreFechas: async (req, res) => {
+        const fecha1 = req.params.fecha1;
+        const fecha2 = req.params.fecha2;
+        try {
+            const fertilizaciones = await Fertilizaciones.find({ fecha: { $gte: fecha1, $lte: fecha2 } });
+            res.json({ fertilizaciones });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 };
 
 

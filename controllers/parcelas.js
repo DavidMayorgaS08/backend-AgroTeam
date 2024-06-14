@@ -37,7 +37,7 @@ const httpParcelas = {
         const _id = req.params.id;
         const parcela = await Parcelas.findById(_id);
         res.json(parcela);
-    }
+    },
 
     putParcelasActivar: async (req, res) => {
         const _id = req.params
@@ -87,32 +87,22 @@ const httpParcelas = {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
-    }
+    },
     //listar entre rango de fecha
-    async getParcelasPorRangoFecha(req, res) {
-        const { fechaInicio, fechaFin } = req.query;
-
+    async getParcelasPorFecha(req, res) {
+        const fecha = req.params.fecha;
         try {
-            const fechaInicioDate = new Date(fechaInicio);
-            const fechaFinDate = new Date(fechaFin);
-
-            const parcelas = await Parcelas.find({
-                fechaCreacion: {
-                    $gte: fechaInicioDate,
-                    $lte: fechaFinDate
-                }
-            });
-
+            const parcelas = await Parcelas.find({ fecha: fecha });
             res.json({ parcelas });
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
-    }
+    },
     //listar asistente
     async getParcelasPorAsistente(req, res) {
-        const asistenteTecnico = req.params.asistenteTecnico;
+        const asistente = req.params.asistente;
         try {
-            const parcelas = await Parcelas.find({ asistenteTecnico: asistenteTecnico });
+            const parcelas = await Parcelas.find({ asistente: asistente });
             res.json({ parcelas });
         } catch (error) {
             res.status(500).json({ error: error.message });

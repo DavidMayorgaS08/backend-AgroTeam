@@ -75,4 +75,4 @@ const httpinventarios = {
     },
 }
 
-export default httpInventarios
+export default httpinventarios

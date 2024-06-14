@@ -7,7 +7,7 @@ const InventariosSchema = new mongoose.Schema({
     cantidad: {type: Number, required: true},
     id_Semillas: {type: mongoose.Schema.Types.ObjectId, ref: 'Semillas', required: true},
     id_insumos: {type: mongoose.Schema.Types.ObjectId, ref: 'Insumos', required: true},
-    id_maquina: {type: mongoose.Schema.Types.ObjectId, ref: 'Maquinas', required: true},
+    id_maquina: {type: mongoose.Schema.Types.ObjectId, ref: 'MaquinariaHerramientas', required: true},
     estado: {type: Number, required: true}
 });
 

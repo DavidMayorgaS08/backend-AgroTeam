@@ -77,7 +77,18 @@ const httpAnalisisSuelos = {
         } catch (error) {
             res.status(500).json({ error: error.message });
         }
-    }
+    },
+    // listar entre fechas
+    async getAnalisisSuelosFecha(req, res) {
+        const fecha1 = req.params.fecha1;
+        const fecha2 = req.params.fecha2;
+        try {
+            const analisisSuelo = await AnalisisSuelo.find({ fecha: { $gte: fecha1, $lte: fecha2 } });
+            res.json({ analisisSuelo });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
 };
 
 export default httpAnalisisSuelos

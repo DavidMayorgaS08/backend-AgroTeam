@@ -75,6 +75,17 @@ const httpControlPlagas = {
             res.status(500).json({ error: error.message });
         }
     },
+    // listar entre fechas
+    async getControlPlagasFechas(req, res) {
+        const fechaInicio = req.params.fechaInicio;
+        const fechaFin = req.params.fechaFin;
+        try {
+            const controlPlagas = await ControlPlagas.find({ "fecha": { "$gte": fechaInicio, "$lte": fechaFin } });
+            res.json(controlPlagas);
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 };
 
 export default httpControlPlagas

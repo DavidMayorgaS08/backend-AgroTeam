@@ -77,6 +77,17 @@ const httpMantenimientos = {
                 res.status(500).json({ error: error.message });
             }
         },
+        // listar entre fechas
+        async getMantenimientosFecha(req, res) {
+            const fecha1 = req.params.fecha1;
+            const fecha2 = req.params.fecha2;
+            try {
+                const mantenimientos = await Mantenimientos.find({ fecha: { $gte: fecha1, $lte: fecha2 } });
+                res.json({ mantenimientos });
+            } catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        },
 };
 
 export default httpMantenimientos

@@ -75,6 +75,17 @@ const httpElaboracionSustratos = {
             res.status(500).json({ error: error.message });
         }
     },
+    // listar entre fechas 
+    async getElaboracionSustratosFechas(req, res) {
+        const fecha1 = req.params.fecha1;
+        const fecha2 = req.params.fecha2;
+        try {
+            const elaboracionSustratos = await ElaboracionSustratos.find({ "fecha": {"$gte": fecha1, "$lt": fecha2} });
+            res.json({ elaboracionSustratos });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    },
 };
 
 export default httpElaboracionSustratos

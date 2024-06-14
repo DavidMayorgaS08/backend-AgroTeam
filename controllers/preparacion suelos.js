@@ -70,5 +70,16 @@ const httpPreparacionSuelos = {
             res.status(500).json({ error: error.message });
         }
     },
+    // listar entre fechas
+    getPreparacionSuelosEntreFechas: async (req, res) => {
+        const fecha1 = req.params.fecha1
+        const fecha2 = req.params.fecha2
+        try {
+            const preparacionSuelos = await PreparacionSuelos.find({ fecha: { $gte: fecha1, $lte: fecha2 } })
+            res.json({ preparacionSuelos })
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }
 }
 export default httpPreparacionSuelos

@@ -12,3 +12,4 @@ const MantenimientosSchema = new mongoose.Schema({
 });
 
 export default mongoose.model('Mantenimientos', MantenimientosSchema);
+

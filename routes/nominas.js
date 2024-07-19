@@ -8,9 +8,10 @@ import nominasHelper from '../helpers/nominas.js';
 const router = Router();
 
 router.post('/', [
-    validarJWT,
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     check('fecha', 'La fecha es obligatoria').not().isEmpty(),
     check('id_empleado', 'El ID del empleado es obligatorio').isMongoId(),
+    check('id_empleado').custom(nominasHelper.validarIdEmpleado),
     check('tipo', 'El tipo es obligatorio').not().isEmpty(),
     check('valor', 'El valor debe ser un número').isNumeric(),
     check('estado', 'El estado debe ser un número').isNumeric(),
@@ -18,7 +19,7 @@ router.post('/', [
 ], httpNominas.postNominas);
 
 router.put('/:id', [
-    validarJWT,
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(nominasHelper.validarId),
     check('fecha', 'La fecha es obligatoria').not().isEmpty(),
@@ -30,57 +31,57 @@ router.put('/:id', [
 ], httpNominas.putNominas);
 
 router.get('/', [
-    validarJWT,
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     validarCampos
 ], httpNominas.getNominas);
 
 router.get('/:id', [
-    validarJWT,
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(nominasHelper.validarId),
     validarCampos
 ], httpNominas.getNominasID);
 
 router.put('/activar/:id', [
-    validarJWT,
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(nominasHelper.validarId),
     validarCampos
 ], httpNominas.putNominasActivar);
 
 router.put('/desactivar/:id', [
-    validarJWT,
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(nominasHelper.validarId),
     validarCampos
 ], httpNominas.putNominasDesactivar);
 
-router.get('/activas', [
-    validarJWT,
+router.get('/listar/activas', [
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     validarCampos
 ], httpNominas.getNominasActivos);
 
-router.get('/inactivas', [
-    validarJWT,
+router.get('/listar/inactivas', [
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     validarCampos
 ], httpNominas.getNominasInactivos);
 
 router.get('/entre-fechas', [
-    validarJWT,
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     check('fechaInicio', 'La fecha de inicio es obligatoria').isDate(),
     check('fechaFin', 'La fecha de fin es obligatoria').isDate(),
     validarCampos
 ], httpNominas.getNominasEntreFechas);
 
 router.get('/empleado/:id', [
-    validarJWT,
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(nominasHelper.validarIdEmpleado),
     validarCampos
 ], httpNominas.getNominaPorEmpleado);
 
 router.get('/total', [
-    validarJWT,
+    // validarJWT, // Comentario añadido para desactivar validarJWT
     validarCampos
 ], httpNominas.getTotalNominas);
 

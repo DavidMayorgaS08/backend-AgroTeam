@@ -1,4 +1,4 @@
-import Administradores from '/../model/administradores.js';
+import Administradores from '../models/administradores.js';
 
 const httpadministradores = {
 
@@ -17,10 +17,11 @@ const httpadministradores = {
         const _id = req.params.id;
         const body = req.body;
         try{
-            const administradores = await Administradores.findByAndUpdate(_id, body, {new: true});
+            const administradores = await Administradores.findByIdAndUpdate(_id, body, {new: true});
             res.json(administradores);
         }
         catch (error) {
+            console.log(error);
             res.status(500).json({error: error.massage});
         }
     },
@@ -43,17 +44,17 @@ const httpadministradores = {
     async activaradministradores(req, res) {
         const _id = req.params.id;
         try {
-            const administradores = await Administradores.findByAndUpdate(_id,{estado:1},{new: true});
+            const administradores = await Administradores.findByIdAndUpdate(_id,{estado:1},{new: true});
             res.json(administradores);
         } catch(error) {
-            res,status(500).json({error: error.massage});
+            res.status(500).json({error: error.massage});
         }
     },
 
     async desactivaradministradores  (req, res){
         const _id = req.params.id;
         try {
-            const administradores = await Administradores.findByAndUpdate(_id, {estado: 0}, {new: true});
+            const administradores = await Administradores.findByIdAndUpdate(_id, {estado: 0}, {new: true});
             res.json(administradores);
         } catch (error){
             res.status(500).json({error:error.massage});

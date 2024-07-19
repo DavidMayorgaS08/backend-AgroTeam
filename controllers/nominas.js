@@ -40,7 +40,7 @@ const httpNominas = {
     },
 
     putNominasActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const nomina = await Nominas.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ nomina }) 
@@ -50,7 +50,7 @@ const httpNominas = {
     },
 
     putNominasDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const nomina = await Nominas.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ nomina }) 

@@ -1,4 +1,4 @@
-import Empleados from "../models/empleados";
+import Empleados from "../models/empleados.js";
 
 const empleadosHelper = {
     validarId: async (id) => {

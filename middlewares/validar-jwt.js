@@ -2,7 +2,7 @@ import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken"; 
 import Administradores from "../models/administradores.js";
 
-const jwt = require('jsonwebtoken');
+// const jwt = require('jsonwebtoken');
 
 const generarJWT = (uid) => {
     return new Promise((resolve, reject) => {

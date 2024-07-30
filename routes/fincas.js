@@ -8,44 +8,44 @@ import { validarJWT } from '../middlewares/validar-jwt.js';
 const router = Router();
 
 router.get('/', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpFincas.getFincas);
 
 router.get('/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(fincasHelper.validarId),
     validarCampos
 ], httpFincas.getFincasID);
 
 router.put('/activar/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(fincasHelper.validarId),
     validarCampos
 ], httpFincas.activarFincas);
 
 router.put('/desactivar/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(fincasHelper.validarId),
     validarCampos
 ], httpFincas.desactivarFincas);
 
-router.get('/activos', [
-    validarJWT,
+router.get('/listar/activos', [
+    // validarJWT,
     validarCampos
 ], httpFincas.getFincasActivas);
 
-router.get('/inactivos', [
-    validarJWT,
+router.get('/listar/inactivos', [
+    // validarJWT,
     validarCampos],
     httpFincas.getFincasInactivas);
 
 
 router.put('/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(fincasHelper.validarId),
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
@@ -61,8 +61,9 @@ router.put('/:id', [
 ], httpFincas.putFincas);
 
 router.post('/', [
-    validarJWT,
+    // validarJWT,
     check('id_administrador', 'El ID del administrador es obligatorio').not().isEmpty(),
+    check('id_administrador').custom(fincasHelper.validarIdAdministrador),
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('rut', 'El RUT es obligatorio').not().isEmpty(),
     check('direccion', 'La dirección es obligatoria').not().isEmpty(),

@@ -8,7 +8,7 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpadministradores.getadministradores);
 
@@ -70,6 +70,5 @@ router.put("/desactivar/:id",[
     check("id").custom(administradoresHelper.validarId),
     validarCampos
 ], httpadministradores.desactivaradministradores);
-
 
 export default router;

@@ -99,15 +99,15 @@ const httpParcelas = {
         }
     },
     //listar asistente
-    async getParcelasPorAsistente(req, res) {
-        const asistente = req.params.asistente;
-        try {
-            const parcelas = await Parcelas.find({ asistente: asistente });
-            res.json({ parcelas });
-        } catch (error) {
-            res.status(500).json({ error: error.message });
-        }
-    },
+    // async getParcelasPorAsistente(req, res) {
+    //     const asistente = req.params.asistente;
+    //     try {
+    //         const parcelas = await Parcelas.find({ asistente: asistente });
+    //         res.json({ parcelas });
+    //     } catch (error) {
+    //         res.status(500).json({ error: error.message });
+    //     }
+    // },
 };
 
 export default httpParcelas

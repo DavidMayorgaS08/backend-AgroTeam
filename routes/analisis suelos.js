@@ -8,12 +8,12 @@ import { validarJWT } from '../middlewares/validar-jwt.js';
 const router = Router();
 
 router.get('/', [
-    // validarJWT, // Comentario añadido
+    validarJWT,
     validarCampos
 ], httpAnalisisSuelos.getAnalisisSuelos);
 
 router.get('/:id', [
-    // validarJWT, // Comentario añadido
+    validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(analisisSuelosHelper.validarId),
     validarCampos
@@ -21,17 +21,17 @@ router.get('/:id', [
 
 
 router.get('/listar/activos', [
-    // validarJWT, // Comentario añadido
+    validarJWT,
     validarCampos
 ], httpAnalisisSuelos.getAnalisisSuelosActivos);
 
 router.get('/listar/inactivos', [
-    // validarJWT, // Comentario añadido
+    validarJWT,
     validarCampos
 ], httpAnalisisSuelos.getAnalisisSuelosInactivos);
 
 router.post('/', [
-    // validarJWT, // Comentario añadido
+    validarJWT,
     check('fecha', 'La fecha es obligatoria').not().isEmpty(),
     check('id_parcela', 'El id de la parcela es obligatorio').not().isEmpty(),
     check('id_parcela').custom(analisisSuelosHelper.validarIdParcela),
@@ -47,7 +47,7 @@ router.post('/', [
 ], httpAnalisisSuelos.postAnalisisSuelos);
 
 router.put('/:id', [
-    // validarJWT, // Comentario añadido
+    validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(analisisSuelosHelper.validarId),
     check('fecha', 'La fecha es obligatoria').not().isEmpty(),
@@ -65,14 +65,14 @@ router.put('/:id', [
 ], httpAnalisisSuelos.putAnalisisSuelos);
 
 router.put('/activar/:id', [
-    // validarJWT, // Comentario añadido
+    validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(analisisSuelosHelper.validarId),
     validarCampos
 ], httpAnalisisSuelos.activarAnalisisSuelos);
 
 router.put('/desactivar/:id', [
-    // validarJWT, // Comentario añadido
+    validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(analisisSuelosHelper.validarId),
     validarCampos

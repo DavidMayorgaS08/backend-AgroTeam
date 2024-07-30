@@ -2,7 +2,7 @@ import Procesos from "../models/procesos.js"
 
 const httpProcesos = {
 
-    getGastos: async(req, res) => {
+    getProcesos: async(req, res) => {
         const proceso = await Procesos.find()
         res.json({proceso})
     },

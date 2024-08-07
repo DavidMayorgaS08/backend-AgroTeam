@@ -11,7 +11,7 @@ const httpFertilizaciones = {
     getFertilizacionesID: async(req, res) => {
         const _id = req.params.id 
         const fertilizacion = await Fertilizaciones.findById(_id)
-        res.jos({fertilizacion})
+        res.json({fertilizacion})
     },
 
     postFertilizaciones: async(req, res) => {

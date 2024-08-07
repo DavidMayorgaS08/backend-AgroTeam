@@ -36,7 +36,7 @@ const httpSiembras = {
     async getSiembrasID(req, res) {
         const _id = req.params.id;
         const siembra = await Siembras.findById(_id);
-        res.json(siembra);
+        res.json({siembra});
     },
 
     putSiembrasActivar: async (req, res) => {

@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import Inventarios from '../models/inventarios.js';
 import Semillas from '../models/semillas.js';
 import Insumos from '../models/insumos.js';

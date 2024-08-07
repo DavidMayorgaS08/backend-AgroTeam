@@ -69,12 +69,12 @@ router.post('/', [
     validarCampos
 ], httpGastos.postGastos);
 
-router.get('/activos', [
+router.get('/listar/activos', [
     // validarJWT,
     validarCampos
 ], httpGastos.getGastosActivos);
 
-router.get('/inactivos', [
+router.get('/listar/inactivos', [
     // validarJWT,
     validarCampos
 ], httpGastos.getGastosInactivos);

@@ -8,7 +8,7 @@ const httpCompradores = {
     },
 
     getCompradoresID: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         const compradores = await Compradores.findById(_id)
         res.json({compradores})
     },
@@ -36,7 +36,7 @@ const httpCompradores = {
     },
 
     putCompradoresActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const compradores = await Compradores.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ compradores }) 
@@ -46,7 +46,7 @@ const httpCompradores = {
     },
 
     putCompradoresDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const compradores = await Compradores.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ compradores }) 

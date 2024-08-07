@@ -20,7 +20,7 @@ const httpProcesos = {
             const proceso = await Procesos.create(body)
             res.json({proceso})
         } catch (error) {
-          res.status(500).json({ error: "No se pudo crear el registro" });
+        res.status(500).json({ error: "No se pudo crear el registro" });
         }
     }, 
 

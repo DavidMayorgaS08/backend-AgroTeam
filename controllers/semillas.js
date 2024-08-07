@@ -8,7 +8,7 @@ const httpSemillas = {
     },
 
     getSemillasID: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         const semillas = await Semillas.findById(_id)
         res.json({semillas})
     },
@@ -36,7 +36,7 @@ const httpSemillas = {
     },
 
     putSemillasActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const semillas = await Semillas.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ semillas }) 
@@ -46,7 +46,7 @@ const httpSemillas = {
     },
 
     putSemillasDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const semillas = await Semillas.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ semillas }) 

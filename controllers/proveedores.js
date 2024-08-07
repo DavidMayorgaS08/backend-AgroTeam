@@ -11,7 +11,7 @@ const httpProveedores = {
     getProveedoresID: async(req, res) => {
         const _id = req.params.id
         const proveedor = await Proveedores.findById(_id)
-        res.jos({proveedor})
+        res.json({proveedor})
     },
 
     postProveedores: async(req, res) => {

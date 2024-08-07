@@ -40,7 +40,7 @@ const httpControlPlagas = {
     },
 
     putControlPlagasActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const controlPlagas = await ControlPlagas.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ controlPlagas }) 
@@ -50,7 +50,7 @@ const httpControlPlagas = {
     },
 
     putControlPlagasDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const controlPlagas = await ControlPlagas.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ controlPlagas }) 

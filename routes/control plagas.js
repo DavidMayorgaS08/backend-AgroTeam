@@ -33,12 +33,12 @@ router.put("/desactivar/:id", [
     validarCampos
 ], httpControlPlagas.putControlPlagasDesactivar);
 
-router.get("/activos", [
+router.get("/listar/activos", [
     // validarJWT,
     validarCampos
 ], httpControlPlagas.getControlPlagasActivos);
 
-router.get("/inactivos", [
+router.get("/listar/inactivos", [
     // validarJWT,
     validarCampos
 ], httpControlPlagas.getControlPlagasInactivos);

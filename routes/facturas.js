@@ -8,50 +8,50 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/", [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpFacturas.getFacturas);
 
 router.get("/:id", [
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(facturasHelper.validarId),
     validarCampos
 ], httpFacturas.getFacturasID);
 
 router.put("/activar/:id", [
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(facturasHelper.validarId),
     validarCampos
 ], httpFacturas.putFacturaActivar);
 
 router.put("/desactivar/:id", [
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(facturasHelper.validarId),
     validarCampos
 ], httpFacturas.putFacturaDesactivar);
 
 router.get("/activos", [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpFacturas.getFacturaActivos);
 
 router.get("/inactivos", [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpFacturas.getFacturaInactivos);
 
 router.get("/fechas/:fecha1/:fecha2", [
-    validarJWT,
+    // validarJWT,
     check("fecha1", "La fecha de inicio es obligatoria").not().isEmpty(),
     check("fecha2", "La fecha de fin es obligatoria").not().isEmpty(),
     validarCampos
 ], httpFacturas.getFacturasFechas);
 
 router.put("/:id", [
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(facturasHelper.validarId),
     check("detalle.*.id_inventario").custom(facturasHelper.validarIdInventario),
@@ -68,7 +68,7 @@ router.put("/:id", [
 ], httpFacturas.putFacturas);
 
 router.post("/", [
-    validarJWT,
+    // validarJWT,
     check("detalle.*.id_inventario").custom(facturasHelper.validarIdInventario),
     check("id_comprador").custom(facturasHelper.validarIdComprador),
     check("fecha", "La fecha es obligatoria").isDate(),

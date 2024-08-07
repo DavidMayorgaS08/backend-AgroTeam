@@ -8,29 +8,29 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpCultivos.getCultivos);
 
 router.get("/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(cultivosHelper.validarId),
     validarCampos
 ], httpCultivos.getCultivosID);
 
 router.get("/listar/activos",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpCultivos.getCultivosActivos);
 
 router.get("/listar/inactivos",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpCultivos.getCultivosInactivos);
 
 router.post("/",[
-    validarJWT,
+    // validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("tipo", "El tipo es obligatorio").not().isEmpty(),
     check("id_parcela", "El id de la parcela es obligatorio").not().isEmpty(),
@@ -39,7 +39,7 @@ router.post("/",[
 ])
 
 router.put("/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(cultivosHelper.validarId),
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
@@ -50,14 +50,14 @@ router.put("/:id",[
 ], httpCultivos.putCultivos);
 
 router.put("/activar/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(cultivosHelper.validarId),
     validarCampos
 ], httpCultivos.putCultivosActivar);
 
 router.put("/desactivar/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(cultivosHelper.validarId),
     validarCampos

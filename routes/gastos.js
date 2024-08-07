@@ -8,33 +8,33 @@ import { validarJWT } from '../middlewares/validar-jwt.js';
 const router = Router();
 
 router.get('/', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpGastos.getGastos);
 
 router.get('/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(gastosHelper.validarId),
     validarCampos
 ], httpGastos.getGastosID);
 
 router.put('/activar/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(gastosHelper.validarId),
     validarCampos
 ], httpGastos.putGastosActivar);
 
 router.put('/desactivar/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(gastosHelper.validarId),
     validarCampos
 ], httpGastos.putGastosDesactivar);
 
 router.put('/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(gastosHelper.validarId),
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
@@ -53,7 +53,7 @@ router.put('/:id', [
 ], httpGastos.putGastos);
 
 router.post('/', [
-    validarJWT,
+    // validarJWT,
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('fecha', 'La fecha es obligatoria').not().isEmpty(),
     check('NroFactura', 'El número de factura es obligatorio').not().isEmpty(),
@@ -70,24 +70,24 @@ router.post('/', [
 ], httpGastos.postGastos);
 
 router.get('/activos', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpGastos.getGastosActivos);
 
 router.get('/inactivos', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpGastos.getGastosInactivos);
 
 router.get('/fechas/:fecha1/:fecha2', [
-    validarJWT,
+    // validarJWT,
     check('fecha1', 'La primera fecha es obligatoria').not().isEmpty(),
     check('fecha2', 'La segunda fecha es obligatoria').not().isEmpty(),
     validarCampos
 ], httpGastos.getGastosFecha);
 
 router.get('/total', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpGastos.getGastosTotal);
 

@@ -8,29 +8,29 @@ import { validarJWT } from '../middlewares/validar-jwt.js';
 const router = Router();
 
 router.get('/', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpCompradores.getCompradores);
 
 router.get('/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(compradoresHelper.validarId),
     validarCampos
 ], httpCompradores.getCompradoresID);
 
 router.get('/listar/activos', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpCompradores.getCompradoresActivos);
 
 router.get('/listar/inactivos', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpCompradores.getCompradoresInactivos);
 
 router.post('/', [
-    validarJWT,
+    // validarJWT,
     check('id_produccion', 'El id de la producción es obligatorio').not().isEmpty(),
     check('id_produccion').custom(compradoresHelper.validarIdProduccion),
     check('fecha', 'La fecha es obligatoria').not().isEmpty(),
@@ -45,7 +45,7 @@ router.post('/', [
 ], httpCompradores.postCompradores);
 
 router.put('/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(compradoresHelper.validarId),
     check('id_produccion', 'El id de la producción es obligatorio').not().isEmpty(),
@@ -62,14 +62,14 @@ router.put('/:id', [
 ], httpCompradores.putCompradores);
 
 router.put('/activar/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(compradoresHelper.validarId),
     validarCampos
 ], httpCompradores.putCompradoresActivar);
 
 router.put('/desactivar/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(compradoresHelper.validarId),
     validarCampos

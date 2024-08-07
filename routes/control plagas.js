@@ -8,50 +8,50 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/", [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpControlPlagas.getControlPlagas);
 
 router.get("/:id", [
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(controlPlagasHelper.validarId),
     validarCampos
 ], httpControlPlagas.getControlPlagasID);
 
 router.put("/activar/:id", [
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(controlPlagasHelper.validarId),
     validarCampos
 ], httpControlPlagas.putControlPlagasActivar);
 
 router.put("/desactivar/:id", [
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(controlPlagasHelper.validarId),
     validarCampos
 ], httpControlPlagas.putControlPlagasDesactivar);
 
 router.get("/activos", [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpControlPlagas.getControlPlagasActivos);
 
 router.get("/inactivos", [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpControlPlagas.getControlPlagasInactivos);
 
 router.get("/fechas/:fechaInicio/:fechaFin", [
-    validarJWT,
+    // validarJWT,
     check("fechaInicio", "La fecha de inicio es obligatoria").not().isEmpty(),
     check("fechaFin", "La fecha de fin es obligatoria").not().isEmpty(),
     validarCampos
 ], httpControlPlagas.getControlPlagasFechas);
 
 router.put("/:id", [
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(controlPlagasHelper.validarId),
     check("id_cultivo").custom(controlPlagasHelper.validarIdCultivo),
@@ -68,7 +68,7 @@ router.put("/:id", [
 ], httpControlPlagas.putControlPlagas);
 
 router.post("/", [
-    validarJWT,
+    // validarJWT,
     check("id_cultivo").custom(controlPlagasHelper.validarIdCultivo),
     check("id_empleado").custom(controlPlagasHelper.validarIdEmpleado),
     check("fecha", "La fecha es obligatoria").isDate(),

@@ -13,24 +13,24 @@ router.get("/",[
 ], httpadministradores.getadministradores);
 
 router.get("/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(administradoresHelper.validarId),
     validarCampos
 ], httpadministradores.getadministradoresID);
 
 router.get("/listar/activos",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpadministradores.getadministradoresActivos);
 
 router.get("/listar/inactivos",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpadministradores.getadministradoresInactivos);
 
 router.post("/",[
-    validarJWT,
+    // validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("direccion", "La dirección es obligatoria").not().isEmpty(),
     check("telefono", "El teléfono es obligatorio").not().isEmpty(),
@@ -42,8 +42,8 @@ router.post("/",[
     validarCampos
 ], httpadministradores.postadministradores);
 
-router.put ("/:id",[
-    validarJWT,
+router.put("/:id",[
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(administradoresHelper.validarId),
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
@@ -58,14 +58,14 @@ router.put ("/:id",[
 ], httpadministradores.putadministradores);
 
 router.put("/activar/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(administradoresHelper.validarId),
     validarCampos
 ], httpadministradores.activaradministradores);
 
 router.put("/desactivar/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(administradoresHelper.validarId),
     validarCampos

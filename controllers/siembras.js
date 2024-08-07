@@ -44,7 +44,7 @@ const httpSiembras = {
     },
 
     putSiembrasActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const siembras = await Siembras.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ siembras }) 
@@ -54,7 +54,7 @@ const httpSiembras = {
     },
 
     putSiembrasDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const siembras = await Siembras.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ siembras }) 

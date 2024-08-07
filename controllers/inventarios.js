@@ -39,7 +39,7 @@ const httpinventarios = {
     },
 
     putInventariosActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const inventarios = await Inventarios.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ inventarios }) 
@@ -49,7 +49,7 @@ const httpinventarios = {
     },
 
     putInventariosDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const inventarios = await Inventarios.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ inventarios }) 

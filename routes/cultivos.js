@@ -36,7 +36,7 @@ router.post("/",[
     check("id_parcela", "El id de la parcela es obligatorio").not().isEmpty(),
     check("id_parcela").custom(cultivosHelper.validarIdParcela),
     check("estado", "El estado debe ser un número").isNumeric(),
-])
+], httpCultivos.postCultivos);
 
 router.put("/:id",[
     // validarJWT,

@@ -8,7 +8,7 @@ const httpPreparacionSuelos = {
     },
 
     getPreparacionSuelosID: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         const preparacionSuelos = await PreparacionSuelos.findById(_id)
         res.json({preparacionSuelos})
     },
@@ -35,7 +35,7 @@ const httpPreparacionSuelos = {
         }
     },
     putPreparacionSuelosActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const preparacionSuelos = await PreparacionSuelos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ preparacionSuelos }) 
@@ -45,7 +45,7 @@ const httpPreparacionSuelos = {
     },
 
     putPreparacionSuelosDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const preparacionSuelos = await PreparacionSuelos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ preparacionSuelos }) 

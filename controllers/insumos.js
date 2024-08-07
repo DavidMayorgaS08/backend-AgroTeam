@@ -8,7 +8,7 @@ const httpInsumos = {
     },
 
     getInsumosID: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         const insumos = await Insumos.findById(_id)
         res.json({insumos})
     },
@@ -36,7 +36,7 @@ const httpInsumos = {
     },
 
     putInsumosActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const insumos = await Insumos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ insumos }) 
@@ -46,7 +46,7 @@ const httpInsumos = {
     },
 
     putInsumosDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const insumos = await Insumos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ insumos }) 

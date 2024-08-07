@@ -42,7 +42,6 @@ router.post("/",[
     check("fechaCosecha", "La fecha de cosecha es obligatoria").not().isEmpty(),
     check("fechaCosecha", "La fecha de cosecha no es válida").isDate(),
     check("transplante", "El transplante es obligatorio").not().isEmpty(),
-    check("transplante", "El transplante debe ser un número").isNumeric(),
     check("cultivoAnterior", "El cultivo anterior es obligatorio").not().isEmpty(),
     check("id_inventario", "El id_inventario es obligatorio").not().isEmpty(),
     check("id_inventario", "No es un id válido").isMongoId(),

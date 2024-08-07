@@ -1,3 +1,4 @@
+import siembras from "../models/siembras.js";
 import cultivos from "../models/cultivos.js";
 import empleados from "../models/empleados.js";
 import inventario from "../models/inventarios.js";

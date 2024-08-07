@@ -43,6 +43,7 @@ const httpFertilizaciones = {
             res.json({ fertilizaciones }) 
         } catch (error) {
             res.status(500).json({ error: "No se pudo activar" });
+            console.log(error);
         }      
     },
 

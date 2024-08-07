@@ -33,12 +33,12 @@ router.put("/desactivar/:id", [
     validarCampos
 ], httpFacturas.putFacturaDesactivar);
 
-router.get("/activos", [
+router.get("/listar/activos", [
     // validarJWT,
     validarCampos
 ], httpFacturas.getFacturaActivos);
 
-router.get("/inactivos", [
+router.get("/listar/inactivos", [
     // validarJWT,
     validarCampos
 ], httpFacturas.getFacturaInactivos);

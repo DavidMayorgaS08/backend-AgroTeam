@@ -9,7 +9,7 @@ const httpFertilizaciones = {
 
 
     getFertilizacionesID: async(req, res) => {
-        const _id = req.params 
+        const _id = req.params.id 
         const fertilizacion = await Fertilizaciones.findById(_id)
         res.jos({fertilizacion})
     },
@@ -37,7 +37,7 @@ const httpFertilizaciones = {
     },
 
     putFertilizacionesActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const fertilizaciones = await Fertilizaciones.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ fertilizaciones }) 
@@ -47,7 +47,7 @@ const httpFertilizaciones = {
     },
 
     putFertilizacionesDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const fertilizaciones = await Fertilizaciones.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ fertilizaciones }) 

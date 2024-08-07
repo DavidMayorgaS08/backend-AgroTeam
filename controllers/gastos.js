@@ -9,9 +9,9 @@ const httpGastos = {
 
 
     getGastosID: async(req, res) => {
-        const _id = req.params 
+        const _id = req.params.id 
         const gasto = await Gastos.findById(_id)
-        res.jos({gasto})
+        res.json({gasto})
     },
 
     postGastos: async(req, res) => {
@@ -37,7 +37,7 @@ const httpGastos = {
     },
 
     putGastosActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const gasto = await Gastos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ gasto }) 
@@ -47,7 +47,7 @@ const httpGastos = {
     },
 
     putGastosDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const gasto = await Gastos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ gasto }) 

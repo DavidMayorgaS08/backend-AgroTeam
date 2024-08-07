@@ -40,7 +40,7 @@ const httpParcelas = {
     },
 
     putParcelasActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const parcelas = await Parcelas.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ parcelas })
@@ -50,7 +50,7 @@ const httpParcelas = {
     },
 
     putParcelasDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const parcelas = await Parcelas.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ parcelas })

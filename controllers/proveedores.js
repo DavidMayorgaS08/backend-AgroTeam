@@ -37,7 +37,7 @@ const httpProveedores = {
     },
 
     putProveedoresActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const proveedores = await Proveedores.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ proveedores }) 
@@ -47,7 +47,7 @@ const httpProveedores = {
     },
 
     putProveedoresDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const proveedores = await Proveedores.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ proveedores }) 

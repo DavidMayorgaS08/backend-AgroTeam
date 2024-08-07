@@ -17,7 +17,7 @@ const httpinventarios = {
         const body =req.body;
         try {
             const inventarios = await Inventarios.findByIdAndUpdate(_id, body, {new:true});
-            res,json(inventarios);
+            res,json({inventarios});
         } catch (error) {
             res.status(500).json({error: error.message});
         }

@@ -38,8 +38,8 @@ router.post('/', [
     check('ingredienteActivo', 'El ingrediente activo es obligatorio').not().isEmpty(),
     check('dosisUtilizada', 'La dosis utilizada es obligatoria').not().isEmpty(),
     check('metodoAplicacion', 'El método de aplicación es obligatorio').not().isEmpty(),
-    check('id_empleado', 'El id del empleado es obligatorio').not().isEmpty(),
-    check('id_empleado').custom(elaboracionSustratosHelper.validarIdEmpleado),
+    check('id_empleado_operario', 'El id del empleado es obligatorio').not().isEmpty(),
+    check('id_empleado_responsable').custom(elaboracionSustratosHelper.validarIdEmpleado),
     check('observaciones', 'Las observaciones son obligatorio').not().isEmpty(),
     check('estado', 'El estado debe ser un número').isNumeric(),
     validarCampos

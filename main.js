@@ -19,14 +19,14 @@ import inventarios from "./routes/inventarios.js"
 import mantenimientos from "./routes/mantenimientos.js"
 import maquinaria_herramientas from "./routes/maquinaria&herramientas.js"
 import nominas from "./routes/nominas.js"
-// import parcelas from "./routes/parcelas.js"
-// import preparacion_suelos from "./routes/preparacion suelos.js"
-// import procesos from "./routes/procesos.js"
-// import producciones from "./routes/producciones.js"
-// import proveedores from "./routes/proveedores.js"
-// import riegos from "./routes/riegos.js"
-// import semillas from "./routes/semillas.js"
-// import siembras from "./routes/siembras.js"
+import parcelas from "./routes/parcelas.js"
+import preparacion_suelos from "./routes/preparacion suelos.js"
+import procesos from "./routes/procesos.js"
+import producciones from "./routes/producciones.js"
+import proveedores from "./routes/proveedores.js"
+import riegos from "./routes/riegos.js"
+import semillas from "./routes/semillas.js"
+import siembras from "./routes/siembras.js"
 
 const app = express();
 app.use(express.json());
@@ -47,19 +47,14 @@ app.use("/api/inventarios", inventarios)
 app.use("/api/mantenimientos", mantenimientos)
 app.use("/api/maquinaria_herramientas", maquinaria_herramientas)
 app.use("/api/nominas", nominas)
-// app.use("/api/parcelas", parcelas)
-// app.use("/api/preparacion_suelos", preparacion_suelos)
-// app.use("/api/procesos", procesos)
-// app.use("/api/producciones", producciones)
-// app.use("/api/proveedores", proveedores)
-// app.use("/api/riegos", riegos)
-// app.use("/api/semillas", semillas)
-// app.use("/api/siembras", siembras)
-
-
-
-
-
+app.use("/api/parcelas", parcelas)
+app.use("/api/preparacion_suelos", preparacion_suelos)
+app.use("/api/procesos", procesos)
+app.use("/api/producciones", producciones)
+app.use("/api/proveedores", proveedores)
+app.use("/api/riegos", riegos)
+app.use("/api/semillas", semillas)
+app.use("/api/siembras", siembras)
 
 app.listen(process.env.PORT, function () {
     console.log(`Servidor escuchando en el puerto ${process.env.PORT}`);

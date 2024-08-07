@@ -40,7 +40,7 @@ const httpCultivos = {
     },
     
     putCultivosActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const cultivo = await Cultivos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ cultivo }) 
@@ -50,7 +50,7 @@ const httpCultivos = {
     },
 
     putCultivosDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const cultivo = await Cultivos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ cultivo }) 

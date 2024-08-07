@@ -9,7 +9,7 @@ const httpMaquinariaHerramientas = {
 
 
     getMaquinariaHerramientasID: async(req, res) => {
-        const _id = req.params 
+        const _id = req.params.id 
         const maquinaria_herramientas = await MaquinariaHerramientas.findById(_id)
         res.jos({maquinaria_herramientas})
     },
@@ -36,7 +36,7 @@ const httpMaquinariaHerramientas = {
         }
     },
     putMaquinariaHerramientasActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const maquinaria_herramientas = await MaquinariaHerramientas.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ maquinaria_herramientas }) 
@@ -46,7 +46,7 @@ const httpMaquinariaHerramientas = {
     },
 
     putMaquinariaHerramientasDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const maquinaria_herramientas = await MaquinariaHerramientas.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ maquinaria_herramientas }) 

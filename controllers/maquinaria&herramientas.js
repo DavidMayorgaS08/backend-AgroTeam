@@ -11,7 +11,7 @@ const httpMaquinariaHerramientas = {
     getMaquinariaHerramientasID: async(req, res) => {
         const _id = req.params.id 
         const maquinaria_herramientas = await MaquinariaHerramientas.findById(_id)
-        res.jos({maquinaria_herramientas})
+        res.json({maquinaria_herramientas})
     },
 
     postMaquinariaHerramientas: async(req, res) => {

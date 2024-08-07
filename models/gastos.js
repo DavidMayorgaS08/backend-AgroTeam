@@ -8,7 +8,7 @@ const GastosSchema = new mongoose.Schema({
     total: {type: Number, required: true},
     id_insumo: {type: mongoose.Schema.Types.ObjectId, ref: 'Insumos', required: true},
     id_semillas: {type: mongoose.Schema.Types.ObjectId, ref: 'Semillas', required: true},
-    id_matenimiento: {type: mongoose.Schema.Types.ObjectId, ref: 'Mantenimientos', required: true},
+    id_mantenimiento: {type: mongoose.Schema.Types.ObjectId, ref: 'Mantenimientos', required: true},
     estado: {type: Number, required: true}
 });
 

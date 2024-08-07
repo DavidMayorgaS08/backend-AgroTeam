@@ -40,7 +40,7 @@ const httpElaboracionSustratos = {
     },
 
     putElaboracionSustratosActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const elaboracionSustratos = await ElaboracionSustratos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ elaboracionSustratos }) 
@@ -50,7 +50,7 @@ const httpElaboracionSustratos = {
     },
 
     putElaboracionSustratosDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const elaboracionSustratos = await ElaboracionSustratos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ elaboracionSustratos }) 

@@ -13,6 +13,7 @@ const SemillasSchema = new mongoose.Schema({
     observaciones: {type: String, required: true},
     unidadTotal: {type: String, required: true},
     total: {type: Number, required: true},
+    transplante: {type: Number, required: true},
     estado: {type: Number, required: true}
 });
 

@@ -71,12 +71,12 @@ router.put('/desactivar/:id', [
 ], httpFertilizaciones.putFertilizacionesDesactivar);
 
 
-router.get('/activos', [
+router.get('/listar/activos', [
     // validarJWT,
     validarCampos
 ], httpFertilizaciones.getFertilizacionesActivos);
 
-router.get('/inactivos', [
+router.get('/listar/inactivos', [
     // validarJWT,
     validarCampos
 ], httpFertilizaciones.getFertilizacionesInactivos);

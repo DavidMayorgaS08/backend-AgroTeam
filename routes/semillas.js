@@ -39,7 +39,7 @@ router.post("/",[
     check("id_proveedor", "El id_proveedor es obligatorio").not().isEmpty(),
     check("id_proveedor", "No es un id válido").isMongoId(),
     check("id_proveedor").custom(semillasHelper.validarIdProveedor),
-    check("NumFactura", "El número de factura es obligatorio").not().isEmpty(),
+    check("numFactura", "El número de factura es obligatorio").not().isEmpty(),
     check("fechaCompra", "La fecha de compra es obligatoria").not().isEmpty(),
     check("fechaCompra", "La fecha de compra no es válida").isDate(),
     check("fechaVencimiento", "La fecha de vencimiento es obligatoria").not().isEmpty(),

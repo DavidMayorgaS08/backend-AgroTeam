@@ -20,7 +20,8 @@ const httpGastos = {
             const gasto = await Gastos.create(body)
             res.json({gasto})
         } catch (error) {
-          res.status(500).json({ error: "No se pudo crear el registro" });
+            console.log(error);
+            res.status(500).json({ error: "No se pudo crear el registro" });
         }
     }, 
 

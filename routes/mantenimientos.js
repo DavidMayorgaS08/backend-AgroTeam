@@ -23,7 +23,6 @@ router.put('/:id', [
     // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(mantenimientosHelper.validarId),
-    check('id_gastos', 'El ID de gasto es obligatorio').not().isEmpty(),
     check('id_herramienta', 'El ID de herramienta es obligatorio').not().isEmpty(),
     check('fecha', 'La fecha es obligatoria').isDate(),
     check('virificacionRealizada', 'La verificación realizada es obligatoria').not().isEmpty(),
@@ -36,8 +35,6 @@ router.put('/:id', [
 
 router.post('/', [
     // validarJWT,
-    check('id_gastos', 'El ID de gasto es obligatorio').not().isEmpty(),
-    check('id_gastos').custom(mantenimientosHelper.validarIdGasto),
     check('id_herramienta', 'El ID de herramienta es obligatorio').not().isEmpty(),
     check('id_herramienta').custom(mantenimientosHelper.validarIdHerramienta),
     check('fecha', 'La fecha es obligatoria').isDate(),

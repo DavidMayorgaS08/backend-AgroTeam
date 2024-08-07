@@ -11,7 +11,7 @@ const httpProcesos = {
     getProcesosID: async(req, res) => {
         const _id = req.params 
         const proceso = await Procesos.findById(_id)
-        res.jos({proceso})
+        res.json({proceso})
     },
 
     postProcesos: async(req, res) => {

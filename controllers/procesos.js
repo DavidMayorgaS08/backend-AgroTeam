@@ -9,7 +9,7 @@ const httpProcesos = {
 
 
     getProcesosID: async(req, res) => {
-        const _id = req.params 
+        const _id = req.params._id
         const proceso = await Procesos.findById(_id)
         res.jos({proceso})
     },
@@ -36,7 +36,7 @@ const httpProcesos = {
         }
     },
     putProcesosActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params._id
         try {
             const proceso = await Procesos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ proceso }) 
@@ -46,7 +46,7 @@ const httpProcesos = {
     },
 
     putProcesosDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params._id
         try {
             const proceso = await Procesos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ proceso }) 

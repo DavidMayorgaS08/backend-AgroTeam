@@ -40,7 +40,7 @@ const httpMantenimientos = {
     },
 
     putMantenimientosActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const mantenimiento = await Mantenimientos.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ mantenimiento }) 
@@ -50,7 +50,7 @@ const httpMantenimientos = {
     },
 
     putMantenimientosDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const mantenimiento = await Mantenimientos.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ mantenimiento }) 

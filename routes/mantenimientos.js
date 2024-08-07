@@ -60,12 +60,12 @@ router.put('/desactivar/:id', [
     validarCampos
 ], httpMantenimientos.putMantenimientosDesactivar);
 
-router.get('/activas', [
+router.get('/listar/activas', [
     // validarJWT,
     validarCampos
 ], httpMantenimientos.getMantenimientosActivas);
 
-router.get('/inactivas', [
+router.get('/listar/inactivas', [
     // validarJWT,
     validarCampos
 ], httpMantenimientos.getMantenimientosInactivas);

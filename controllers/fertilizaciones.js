@@ -37,17 +37,17 @@ const httpFertilizaciones = {
     },
 
     putFertilizacionesActivar: async (req, res) => {
-        const _id = req.params.id
+        const _id = req.params
         try {
             const fertilizaciones = await Fertilizaciones.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ fertilizaciones }) 
         } catch (error) {
-            res.status(500).json({error});
+            res.status(500).json({ error: "No se pudo activar" });
         }      
     },
 
     putFertilizacionesDesactivar: async (req, res) => {
-        const _id = req.params.id
+        const _id = req.params
         try {
             const fertilizaciones = await Fertilizaciones.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ fertilizaciones }) 

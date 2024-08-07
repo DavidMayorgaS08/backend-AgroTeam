@@ -35,8 +35,12 @@ const httpSiembras = {
     // listar una siembra por id
     async getSiembrasID(req, res) {
         const _id = req.params.id;
-        const siembra = await Siembras.findById(_id);
-        res.json({siembra});
+        try {
+            const siembra = await Siembras.findById(_id);
+            res.json({ siembra });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
     },
 
     putSiembrasActivar: async (req, res) => {

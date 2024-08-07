@@ -8,34 +8,34 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpPreparacionSuelos.getPreparacionSuelos);
 
 router.get("/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(preparacionSuelosHelper.validarId),
     validarCampos
 ], httpPreparacionSuelos.getPreparacionSuelosID);
 
 router.get("/listar/activos",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpPreparacionSuelos.getPreparacionSuelosActivos);
 
 router.get("/listar/inactivos",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpPreparacionSuelos.getPreparacionSuelosInactivos);
 
 router.get("/listar/entre/fecha",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpPreparacionSuelos.getPreparacionSuelosEntreFechas);
 
 router.post("/",[
-    validarJWT,
+    // validarJWT,
     check("fecha", "La fecha es obligatoria").not().isEmpty(),
     check("id_parcela", "El id de la parcela es obligatorio").not().isEmpty(),
     check("id_parcela", "No es un id válido").isMongoId(),
@@ -51,7 +51,7 @@ router.post("/",[
 ], httpPreparacionSuelos.postPreparacionSuelos);
 
 router.put ("/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(preparacionSuelosHelper.validarId),
     check("fecha", "La fecha es obligatoria").not().isEmpty(),
@@ -69,14 +69,14 @@ router.put ("/:id",[
 ], httpPreparacionSuelos.putPreparacionSuelos);
 
 router.put("/activar/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(preparacionSuelosHelper.validarId),
     validarCampos
 ], httpPreparacionSuelos.putPreparacionSuelosActivar);
 
 router.put("/desactivar/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(preparacionSuelosHelper.validarId),
     validarCampos

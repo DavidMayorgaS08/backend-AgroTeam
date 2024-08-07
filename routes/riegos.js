@@ -8,34 +8,34 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpRiegos.getRiegos);
 
 router.get("/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(riegosHelper.validarId),
     validarCampos
 ], httpRiegos.getRiegosID);
 
 router.get("/listar/activos",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpRiegos.getRiegosActivos);
 
 router.get("/listar/inactivos",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpRiegos.getRiegosInactivos);
 
 router.get("/listar/entre/fecha",[
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpRiegos.getRiegosFecha);
 
 router.post("/",[
-    validarJWT,
+    // validarJWT,
     check("id_cultivo", "El id_cultivo es obligatorio").not().isEmpty(),
     check("id_cultivo", "No es un id válido").isMongoId(),
     check("id_cultivo").custom(riegosHelper.validarIdCultivo),
@@ -57,7 +57,7 @@ router.post("/",[
 ], httpRiegos.postRiegos);
 
 router.put("/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(riegosHelper.validarId),
     check("id_cultivo", "El id_cultivo es obligatorio").not().isEmpty(),
@@ -81,14 +81,14 @@ router.put("/:id",[
 ], httpRiegos.putRiegos);
 
 router.put("/activar/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(riegosHelper.validarId),
     validarCampos
 ], httpRiegos.activarRiegos);
 
 router.put("/desactivar/:id",[
-    validarJWT,
+    // validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(riegosHelper.validarId),
     validarCampos

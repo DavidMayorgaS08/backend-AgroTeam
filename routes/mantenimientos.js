@@ -8,19 +8,19 @@ import { validarJWT } from '../middlewares/validar-jwt.js';
 const router = Router();
 
 router.get('/', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpMantenimientos.getMantenimientos);
 
 router.get('/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(mantenimientosHelper.validarId),
     validarCampos
 ], httpMantenimientos.getMantenimientosID);
 
 router.put('/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(mantenimientosHelper.validarId),
     check('id_gastos', 'El ID de gasto es obligatorio').not().isEmpty(),
@@ -35,7 +35,7 @@ router.put('/:id', [
 ], httpMantenimientos.putMantenimientos);
 
 router.post('/', [
-    validarJWT,
+    // validarJWT,
     check('id_gastos', 'El ID de gasto es obligatorio').not().isEmpty(),
     check('id_gastos').custom(mantenimientosHelper.validarIdGasto),
     check('id_herramienta', 'El ID de herramienta es obligatorio').not().isEmpty(),
@@ -50,31 +50,31 @@ router.post('/', [
 ], httpMantenimientos.postMantenimientos);
 
 router.put('/activar/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(mantenimientosHelper.validarId),
     validarCampos
 ], httpMantenimientos.putMantenimientosActivar);
 
 router.put('/desactivar/:id', [
-    validarJWT,
+    // validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(mantenimientosHelper.validarId),
     validarCampos
 ], httpMantenimientos.putMantenimientosDesactivar);
 
 router.get('/activas', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpMantenimientos.getMantenimientosActivas);
 
 router.get('/inactivas', [
-    validarJWT,
+    // validarJWT,
     validarCampos
 ], httpMantenimientos.getMantenimientosInactivas);
 
 router.get('/fecha/:fecha1/:fecha2', [
-    validarJWT,
+    // validarJWT,
     check('fecha1', 'La fecha de inicio es obligatoria').isDate(),
     check('fecha2', 'La fecha de fin es obligatoria').isDate(),
     validarCampos

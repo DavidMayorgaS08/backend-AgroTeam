@@ -4,7 +4,7 @@ const httpProveedores = {
 
     getProveedores: async(req, res) => {
         const proveedor = await Proveedores.find()
-        res.json({gasto})
+        res.json({proveedor})
     },
 
 

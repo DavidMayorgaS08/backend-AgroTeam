@@ -63,7 +63,7 @@ router.put("/:id", [
     check("ingredienteActivo", "El ingrediente activo es obligatorio").not().isEmpty(),
     check("dosis", "La dosis es obligatoria y debe ser un número").isNumeric(),
     check("observaciones", "Las observaciones son obligatorias").not().isEmpty(),
-    check("estado").custom(controlPlagasHelper.validarEstado),
+    check('estado', 'El estado debe ser un número').isNumeric(),
     validarCampos
 ], httpControlPlagas.putControlPlagas);
 
@@ -78,7 +78,7 @@ router.post("/", [
     check("ingredienteActivo", "El ingrediente activo es obligatorio").not().isEmpty(),
     check("dosis", "La dosis es obligatoria y debe ser un número").isNumeric(),
     check("observaciones", "Las observaciones son obligatorias").not().isEmpty(),
-    check("estado").custom(controlPlagasHelper.validarEstado),
+    check('estado', 'El estado debe ser un número').isNumeric(),
     validarCampos
 ], httpControlPlagas.postControlPlagas);
 

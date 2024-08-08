@@ -29,7 +29,7 @@ router.get("/listar/inactivos",[
     validarCampos
 ], httpParcelas.getParcelasInactivas);
 
-router.get("listar/por/cultivoActual",[
+router.get("listar/por/:cultivoActual",[
     // validarJWT,
     validarCampos
 ], httpParcelas.getParcelasPorTipoCultivo);

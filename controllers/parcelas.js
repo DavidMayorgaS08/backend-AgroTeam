@@ -78,16 +78,16 @@ const httpParcelas = {
         }
     },
 
-    //listar por tipo de cultivo
-    async getParcelasPorTipoCultivo(req, res) {
-        const cultivoActual = req.params.cultivoActual;
-        try {
-            const parcelas = await Parcelas.find({ cultivoActual: cultivoActual });
-            res.json({ parcelas });
-        } catch (error) {
-            res.status(500).json({ error: error.message });
-        }
-    },
+    // //listar por tipo de cultivo
+    // async getParcelasPorTipoCultivo(req, res) {
+    //     const cultivoActual = req.params.cultivoActual;
+    //     try {
+    //         const parcelas = await Parcelas.find({ cultivoActual: cultivoActual });
+    //         res.json({ parcelas });
+    //     } catch (error) {
+    //         res.status(500).json({ error: error.message });
+    //     }
+    // },
     //listar entre rango de fecha
     async getParcelasPorFecha(req, res) {
         const fecha = req.params.fecha;

@@ -65,10 +65,10 @@ const httpSemillas = {
         res.json({semillas})
     },
     // listar por id de proveedor
-    async getSemillasProveedor(req, res) {
-        const _id = req.params.id;
-        const semillas = await Semillas.find({proveedor: _id});
-        res.json(semillas);
-    }
+    // async getSemillasProveedor(req, res) {
+    //     const _id = req.params.id;
+    //     const semillas = await Semillas.find({proveedor: _id});
+    //     res.json(semillas);
+    // }
 }
 export default httpSemillas

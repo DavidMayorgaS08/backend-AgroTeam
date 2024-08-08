@@ -34,7 +34,7 @@ router.get("listar/por/cultivoActual",[
     validarCampos
 ], httpParcelas.getParcelasPorTipoCultivo);
 
-router.get("listar/entre/fechas",[
+router.get("fechas/:fecha1/:fecha2",[
     // validarJWT,
     validarCampos
 ], httpParcelas.getParcelasPorFecha);

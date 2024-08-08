@@ -29,10 +29,10 @@ router.get("/listar/inactivos",[
     validarCampos
 ], httpSemillas.getSemillasInactivas);
 
-router.get("listar/por/:proveedor",[
-    // validarJWT,
-    validarCampos
-], httpSemillas.getSemillasProveedor);
+// router.get("listar/por/:proveedor",[
+//     // validarJWT,
+//     validarCampos
+// ], httpSemillas.getSemillasProveedor);
 
 router.post("/",[
     // validarJWT,

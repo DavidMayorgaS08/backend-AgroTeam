@@ -39,7 +39,7 @@ const httpFacturas = {
         res.json(factura);
     },
     putFacturaActivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const factura = await Factura.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
             res.json({ factura }) 
@@ -49,7 +49,7 @@ const httpFacturas = {
     },
 
     putFacturaDesactivar: async (req, res) => {
-        const _id = req.params
+        const _id = req.params.id
         try {
             const factura = await Factura.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
             res.json({ factura }) 

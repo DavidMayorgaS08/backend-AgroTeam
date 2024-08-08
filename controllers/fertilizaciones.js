@@ -37,24 +37,23 @@ const httpFertilizaciones = {
     },
 
     putFertilizacionesActivar: async (req, res) => {
-        const _id = req.params.id
+        const id = req.params.id;
         try {
-            const fertilizaciones = await Fertilizaciones.findByIdAndUpdate(_id, { estado: 1 }, { new: true })
-            res.json({ fertilizaciones }) 
+            const fertilizacion = await Fertilizaciones.findByIdAndUpdate(id, { estado: 1 }, { new: true });
+            res.json(fertilizacion);
         } catch (error) {
-            console.log(error);
-            res.status(500).json({ error: "No se pudo activar" });
-        }      
+            res.status(500).json({ error: "No se pudo activar el registro" });
+        }     
     },
 
     putFertilizacionesDesactivar: async (req, res) => {
-        const _id = req.params.id
+        const id = req.params.id;
         try {
-            const fertilizaciones = await Fertilizaciones.findByIdAndUpdate(_id, { estado: 0 }, { new: true })
-            res.json({ fertilizaciones }) 
+            const fertilizacion = await Fertilizaciones.findByIdAndUpdate(id, { estado: 0 }, { new: true });
+            res.json(fertilizacion);
         } catch (error) {
-            res.status(500).json({ error: "No se pudo desactivar" });
-        }      
+            res.status(500).json({ error: "No se pudo desactivar el registro" });
+        }
     },
 
     getFertilizacionesActivos: async (req, res)=> {

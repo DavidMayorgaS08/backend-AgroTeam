@@ -66,10 +66,10 @@ router.get('/listar/inactivas', [
     validarCampos
 ], httpNominas.getNominasInactivos);
 
-router.get('/entre-fechas', [
+router.get('/fechas/:fecha1/:fecha2', [
     // validarJWT, // Comentario añadido para desactivar validarJWT
-    check('fechaInicio', 'La fecha de inicio es obligatoria').isDate(),
-    check('fechaFin', 'La fecha de fin es obligatoria').isDate(),
+    check('fecha1', 'La fecha de inicio es obligatoria').isDate(),
+    check('fecha2', 'La fecha de fin es obligatoria').isDate(),
     validarCampos
 ], httpNominas.getNominasEntreFechas);
 

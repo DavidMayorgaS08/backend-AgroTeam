@@ -29,7 +29,7 @@ router.get("/listar/inactivos",[
     validarCampos
 ], httpRiegos.getRiegosInactivos);
 
-router.get("/listar/entre/fecha",[
+router.get("/fechas/:fecha1/:fecha2",[
     // validarJWT,
     validarCampos
 ], httpRiegos.getRiegosFecha);

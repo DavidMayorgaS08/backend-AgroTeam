@@ -90,9 +90,10 @@ const httpParcelas = {
     // },
     //listar entre rango de fecha
     async getParcelasPorFecha(req, res) {
-        const fecha = req.params.fecha;
+        const fecha1 = req.params.fecha1;
+        const fecha2 = req.params.fecha2;
         try {
-            const parcelas = await Parcelas.find({ fecha: fecha });
+            const parcelas = await Parcelas.find({ fecha_Creacion: { $gte: fecha1, $lte: fecha2 } });
             res.json({ parcelas });
         } catch (error) {
             res.status(500).json({ error: error.message });

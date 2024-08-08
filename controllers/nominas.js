@@ -77,14 +77,10 @@ const httpNominas = {
     },
         // Listar nóminas entre fechas
         async getNominasEntreFechas(req, res) {
-            const { fechaInicio, fechaFin } = req.query;
+            const fecha1 = req.params.fecha1
+            const fecha2 = req.params.fecha2
             try {
-                const nominas = await Nominas.find({
-                    fecha: {
-                        $gte: new Date(fechaInicio),
-                        $lte: new Date(fechaFin)
-                    }
-                });
+                const nominas = await Nominas.find({ fecha: { $gte: fecha1, $lte: fecha2 } });
                 res.json({ nominas });
             } catch (error) {
                 res.status(500).json({ error: error.message });

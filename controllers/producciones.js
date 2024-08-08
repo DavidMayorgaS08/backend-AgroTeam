@@ -86,15 +86,15 @@ const httpProducciones = {
         }
     },
     // listar por cultivo
-    async getProduccionesCultivo(req, res) {
-        const id_cultivo = req.params.id_cultivo;
-        try {
-            const produccion = await Produccion.find({ id_cultivo: id_cultivo });
-            res.json({ produccion });
-        } catch (error) {
-            res.status(500).json({ error: error.message });
-        }
-    }
+    // async getProduccionesCultivo(req, res) {
+    //     const id_cultivo = req.params.id_cultivo;
+    //     try {
+    //         const produccion = await Produccion.find({ id_cultivo: id_cultivo });
+    //         res.json({ produccion });
+    //     } catch (error) {
+    //         res.status(500).json({ error: error.message });
+    //     }
+    // }
 };
 
 export default httpProducciones

@@ -34,12 +34,12 @@ router.get("/fechas/:fecha1/:fecha2",[
     validarCampos
 ], httpProducciones.getProduccionesFechas);
 
-router.get("/listar/por/cultivo/:id",[
-    // validarJWT,
-    check("id", "No es un id válido").isMongoId(),
-    check("id").custom(produccionesHelper.validarIdCultivo),
-    validarCampos
-], httpProducciones.getProduccionesCultivo);
+// router.get("/listar/por/cultivo/:id",[
+//     // validarJWT,
+//     check("id", "No es un id válido").isMongoId(),
+//     check("id").custom(produccionesHelper.validarIdCultivo),
+//     validarCampos
+// ], httpProducciones.getProduccionesCultivo);
 
 router.post("/",[
     // validarJWT,

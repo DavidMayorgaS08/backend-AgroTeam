@@ -80,7 +80,7 @@ router.get('/empleado/:id', [
     validarCampos
 ], httpNominas.getNominaPorEmpleado);
 
-router.get('/total/nominas', [
+router.get('/total/nominas/', [
     // validarJWT, // Comentario añadido para desactivar validarJWT
     validarCampos
 ], httpNominas.getTotalNominas);

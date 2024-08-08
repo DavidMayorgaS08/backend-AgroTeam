@@ -29,7 +29,7 @@ router.get("/listar/inactivos",[
     validarCampos
 ], httpPreparacionSuelos.getPreparacionSuelosInactivos);
 
-router.get("/listar/:entre1/:fecha2",[
+router.get("/fechas/:fecha1/:fecha2",[
     // validarJWT,
     validarCampos
 ], httpPreparacionSuelos.getPreparacionSuelosEntreFechas);

@@ -29,8 +29,8 @@ const validarJWT = async (req, res, next) => {
     }
     
     try {
-        const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
-        let Administrador = await Administradores.findById(uid);
+        const { id } = jwt.verify(token, process.env.SECRETORPRIVATEKEY)
+        let Administrador = await Administradores.findById(id);
 
         if (!Administrador) {
             return res.status(401).json({

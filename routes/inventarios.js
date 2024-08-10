@@ -8,29 +8,29 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpInventarios.getinventarios);
 
 router.get("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(inventariosHelper.validarId),
     validarCampos
 ], httpInventarios.getinventariosID);
 
 router.get("/listar/activos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpInventarios.getInventariosActivos);
 
 router.get("/listar/inactivos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpInventarios.getInventariosInactivos);
 
 router.post("/",[
-    // validarJWT,
+    validarJWT,
     check("tipo", "El tipo es obligatorio").not().isEmpty(),
     check("observaciones", "Las observaciones son obligatorias").not().isEmpty(),
     check("unidad", "La unidad es obligatoria").not().isEmpty(),
@@ -46,7 +46,7 @@ router.post("/",[
 ], httpInventarios.postinventarios);
 
 router.put("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(inventariosHelper.validarId),
     check("tipo", "El tipo es obligatorio").not().isEmpty(),
@@ -64,14 +64,14 @@ router.put("/:id",[
 ], httpInventarios.putinventarios);
 
 router.put("/activar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(inventariosHelper.validarId),
     validarCampos
 ], httpInventarios.putInventariosActivar);
 
 router.put("/desactivar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(inventariosHelper.validarId),
     validarCampos

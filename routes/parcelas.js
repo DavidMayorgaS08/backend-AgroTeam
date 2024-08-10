@@ -8,39 +8,39 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpParcelas.getParcelas);
 
 router.get("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(parcelasHelper.validarId),
     validarCampos
 ], httpParcelas.getParcelasID);
 
 router.get("/listar/activos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpParcelas.getParcelasActivas);
 
 router.get("/listar/inactivos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpParcelas.getParcelasInactivas);
 
 // router.get("listar/por/:cultivoActual",[
-//     // validarJWT,
+//     validarJWT,
 //     validarCampos
 // ], httpParcelas.getParcelasPorTipoCultivo);
 
 router.get("fechas/:fecha1/:fecha2",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpParcelas.getParcelasPorFecha);
 
 router.post("/",[
-    // validarJWT,
+    validarJWT,
     check("numero", "El número es obligatorio").not().isEmpty(),
     check("ubicacionGeografica", "La ubicación geográfica es obligatoria").not().isEmpty(),
     check("cultivoAnterior", "El cultivo anterior es obligatorio").not().isEmpty(),
@@ -57,7 +57,7 @@ router.post("/",[
 ], httpParcelas.postParcelas);
 
 router.put("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(parcelasHelper.validarId),
     check("numero", "El número es obligatorio").not().isEmpty(),
@@ -76,14 +76,14 @@ router.put("/:id",[
 ], httpParcelas.putParcelas);
 
 router.put("/activar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(parcelasHelper.validarId),
     validarCampos
 ], httpParcelas.putParcelasActivar);
 
 router.put("/desactivar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(parcelasHelper.validarId),
     validarCampos

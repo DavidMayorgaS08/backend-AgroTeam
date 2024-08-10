@@ -8,34 +8,34 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpSemillas.getSemillas);
 
 router.get("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(semillasHelper.validarId),
     validarCampos
 ], httpSemillas.getSemillasID);
 
 router.get("/listar/activos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpSemillas.getSemillasActivas);
 
 router.get("/listar/inactivos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpSemillas.getSemillasInactivas);
 
 // router.get("listar/por/:proveedor",[
-//     // validarJWT,
+//     validarJWT,
 //     validarCampos
 // ], httpSemillas.getSemillasProveedor);
 
 router.post("/",[
-    // validarJWT,
+    validarJWT,
     check("id_proveedor", "El id_proveedor es obligatorio").not().isEmpty(),
     check("id_proveedor", "No es un id válido").isMongoId(),
     check("id_proveedor").custom(semillasHelper.validarIdProveedor),
@@ -56,7 +56,7 @@ router.post("/",[
 ], httpSemillas.postSemillas);
 
 router.put("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(semillasHelper.validarId),
     check("id_proveedor", "El id_proveedor es obligatorio").not().isEmpty(),
@@ -79,14 +79,14 @@ router.put("/:id",[
 ], httpSemillas.putSemillas);
 
 router.put("/activar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(semillasHelper.validarId),
     validarCampos
 ], httpSemillas.putSemillasActivar);
 
 router.put("/desactivar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(semillasHelper.validarId),
     validarCampos

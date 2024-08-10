@@ -8,29 +8,29 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpProcesos.getProcesos);
 
 router.get("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(procesosHelper.validarId),
     validarCampos
 ], httpProcesos.getProcesosID);
 
 router.get("/listar/activos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpProcesos.getProcesosActivos);
 
 router.get("/listar/inactivos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpProcesos.getProcesosInactivos);
 
 router.post("/",[
-    // validarJWT,
+    validarJWT,
     check("id_cultivo", "El id_cultivo es obligatorio").not().isEmpty(),
     check("id_cultivo", "No es un id válido").isMongoId(),
     check("id_cultivo").custom(procesosHelper.validarIdCultivo),
@@ -46,7 +46,7 @@ router.post("/",[
 ], httpProcesos.postProcesos);
 
 router.put("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(procesosHelper.validarId),
     check("id_cultivo", "El id_cultivo es obligatorio").not().isEmpty(),
@@ -64,14 +64,14 @@ router.put("/:id",[
 ], httpProcesos.putProcesos);
 
 router.put("/activar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(procesosHelper.validarId),
     validarCampos
 ], httpProcesos.putProcesosActivar);
 
 router.put("/desactivar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(procesosHelper.validarId),
     validarCampos

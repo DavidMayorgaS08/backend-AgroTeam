@@ -8,19 +8,19 @@ import { validarJWT } from '../middlewares/validar-jwt.js';
 const router = Router();
 
 router.get('/', [
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpFertilizaciones.getFertilizaciones);
 
 router.get('/:id', [
-    // validarJWT,
+    validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(fertilizacionesHelper.validarId),
     validarCampos
 ], httpFertilizaciones.getFertilizacionesID);
 
 router.post('/', [
-    // validarJWT,
+    validarJWT,
     check('id_cultivo', 'El id_cultivo es obligatorio').not().isEmpty(),
     check('id_cultivo').custom(fertilizacionesHelper.validarIdCultivo),
     check('id_empleado', 'El id_empleado es obligatorio').not().isEmpty(),
@@ -37,7 +37,7 @@ router.post('/', [
 ], httpFertilizaciones.postFertilizaciones);
 
 router.put('/:id', [
-    // validarJWT,
+    validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(fertilizacionesHelper.validarId),
     check('id_cultivo', 'El id_cultivo es obligatorio').not().isEmpty(),
@@ -57,14 +57,14 @@ router.put('/:id', [
 
 
 router.put('/activar/:id', [
-    // validarJWT,
+    validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(fertilizacionesHelper.validarId),
     validarCampos
 ], httpFertilizaciones.putFertilizacionesActivar);
 
 router.put('/desactivar/:id', [
-    // validarJWT,
+    validarJWT,
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom(fertilizacionesHelper.validarId),
     validarCampos
@@ -72,18 +72,18 @@ router.put('/desactivar/:id', [
 
 
 router.get('/listar/activos', [
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpFertilizaciones.getFertilizacionesActivos);
 
 router.get('/listar/inactivos', [
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpFertilizaciones.getFertilizacionesInactivos);
 
 
 router.get('/fechas/:fecha1/:fecha2', [
-    // validarJWT,
+    validarJWT,
     check('fecha1', 'Fecha 1 no válida').isISO8601().toDate(),
     check('fecha2', 'Fecha 2 no válida').isISO8601().toDate(),
     validarCampos

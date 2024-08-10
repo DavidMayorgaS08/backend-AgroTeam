@@ -8,29 +8,29 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpMaquinariaHerramientas.getMaquinariaHerramientas);
 
 router.get("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(maquinariaHerramientasHelper.validarId),
     validarCampos
 ], httpMaquinariaHerramientas.getMaquinariaHerramientasID);
 
 router.get("/listar/activos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpMaquinariaHerramientas.getMaquinariaHerramientasActivos);
 
 router.get("/listar/inactivos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpMaquinariaHerramientas.getMaquinariaHerramientasInactivos);
 
 router.post("/",[
-    // validarJWT,
+    validarJWT,
     check("id_proveedor", "El id del proveedor es obligatorio").not().isEmpty(),
     check("id_proveedor").custom(maquinariaHerramientasHelper.validarIdProveedor),
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
@@ -44,7 +44,7 @@ router.post("/",[
 ], httpMaquinariaHerramientas.postMaquinariaHerramientas);
 
 router.put("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(maquinariaHerramientasHelper.validarId),
     check("id_proveedor", "El id del proveedor es obligatorio").not().isEmpty(),
@@ -60,14 +60,14 @@ router.put("/:id",[
 ], httpMaquinariaHerramientas.putMaquinariaHerramientas);
 
 router.put("/activar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(maquinariaHerramientasHelper.validarId),
     validarCampos
 ], httpMaquinariaHerramientas.putMaquinariaHerramientasActivar);
 
 router.put("/desactivar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(maquinariaHerramientasHelper.validarId),
     validarCampos

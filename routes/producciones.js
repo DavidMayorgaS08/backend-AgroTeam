@@ -8,41 +8,41 @@ import { validarJWT } from "../middlewares/validar-jwt.js";
 const router = Router();
 
 router.get("/",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpProducciones.getProducciones);
 
 router.get("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(produccionesHelper.validarId),
     validarCampos
 ], httpProducciones.getProduccionesID);
 
 router.get("/listar/activos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpProducciones.getProduccionesActivos);
 
 router.get("/listar/inactivos",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpProducciones.getProduccionesInactivos);
 
 router.get("/fechas/:fecha1/:fecha2",[
-    // validarJWT,
+    validarJWT,
     validarCampos
 ], httpProducciones.getProduccionesFechas);
 
 // router.get("/listar/por/cultivo/:id",[
-//     // validarJWT,
+//     validarJWT,
 //     check("id", "No es un id válido").isMongoId(),
 //     check("id").custom(produccionesHelper.validarIdCultivo),
 //     validarCampos
 // ], httpProducciones.getProduccionesCultivo);
 
 router.post("/",[
-    // validarJWT,
+    validarJWT,
     check("id_cultivo", "El id del cultivo es obligatorio").not().isEmpty(),
     check("fecha", "La fecha es obligatoria").not().isEmpty(),
     check("NroLote", "El NroLote es obligatorio").not().isEmpty(),
@@ -55,7 +55,7 @@ router.post("/",[
 ], httpProducciones.postProducciones);
 
 router.put("/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(produccionesHelper.validarId),
     check("id_cultivo", "El id del cultivo es obligatorio").not().isEmpty(),
@@ -70,14 +70,14 @@ router.put("/:id",[
 ], httpProducciones.putProducciones);
 
 router.put("/activar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(produccionesHelper.validarId),
     validarCampos
 ], httpProducciones.putProduccionesActivar);
 
 router.put("/desactivar/:id",[
-    // validarJWT,
+    validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(produccionesHelper.validarId),
     validarCampos

@@ -30,6 +30,11 @@ import semillas from "./routes/semillas.js"
 import siembras from "./routes/siembras.js"
 
 const app = express();
+app.use(cors(
+    {
+        origin: '*'
+    }
+));
 app.use(express.json());
 app.use("/api/administradores", administradores)
 app.use("/api/analisis_suelos", analisis_suelos)

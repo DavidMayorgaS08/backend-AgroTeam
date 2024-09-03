@@ -51,7 +51,7 @@ const httpLogin = {
   //       return res.status(500).json({ msg: "Comuníquese con el admin." });
   //     }
   //   },
-  enviarCorreoRecuperaciones: async (email, token) => {
+  enviarCorreoRecuperacion: async (email, token) => {
     res.json({ msg: "enviado" });
   },
 

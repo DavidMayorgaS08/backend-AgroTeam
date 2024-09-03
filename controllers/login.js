@@ -37,23 +37,6 @@ const httpLogin = {
       res.status(500).json({ message: "Error al iniciar sesión" });
     }
   },
-  // getemail: async (req, res) => {
-  //     const { email } = req.query;
-  //     try {
-  //       const user = await Administradores.findOne({ email: email });
-  //       if (!user || user.estado === 0) {
-  //         return res.status(401).json({ msg: "Email incorrecto" });
-  //       }
-  //       const token = await generarJWT(user._id);
-  //     res.json({ usuario: user, token });
-  //       return res.status(200).json({ msg: "Email válido" });
-  //     } catch (error) {
-  //       return res.status(500).json({ msg: "Comuníquese con el admin." });
-  //     }
-  //   },
-  enviarCorreoRecuperacion: async (email, token) => {
-    res.json({ msg: "enviado" });
-  },
 
   recuperarPassword: async (req, res) => {
     const { email } = req.body;
@@ -64,7 +47,6 @@ const httpLogin = {
       }
 
       const token = await generarJWT(user._id);
-      // await enviarCorreoRecuperacion(email, token);
 
       res.json({ msg: "Correo de recuperación enviado" });
     } catch (error) {

@@ -64,7 +64,7 @@ const httpLogin = {
       }
 
       const token = await generarJWT(user._id);
-      await enviarCorreoRecuperacion(email, token);
+      enviarCorreoRecuperacion(email, token);
 
       res.json({ msg: "Correo de recuperación enviado" });
     } catch (error) {

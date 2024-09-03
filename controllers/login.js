@@ -1,6 +1,7 @@
 import Administradores from '../models/administradores.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { generarJWT } from '../middlewares/validar-jwt.js';
 
 const httpLogin = {
     async postLogin(req, res) {
@@ -54,7 +55,7 @@ const httpLogin = {
             return res.status(404).json({ msg: 'Administrador no encontrado' });
           }
     
-          const token = await generarJWT(user._id, user.rol);
+          const token = await generarJWT(user._id);
           await enviarCorreoRecuperacion(email, token);
     
           res.json({ msg: 'Correo de recuperación enviado' });

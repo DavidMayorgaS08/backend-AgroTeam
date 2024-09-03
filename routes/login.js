@@ -13,4 +13,9 @@ router.post("/", [
     validarCampos
 ], httpLogin.postLogin);
 
+router.post("/recuperarContraseña", [
+    check('email', 'El email debe estar bien escrito.').isEmail(),
+    validarCampos
+  ], httpLogin.recuperarPassword);
+
 export default router;

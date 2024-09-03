@@ -13,7 +13,7 @@ router.post("/", [
     validarCampos
 ], httpLogin.postLogin);
 
-router.post("/recuperarContraseña", [
+router.post("/recuperarContrasena", [
     check('email', 'El email debe estar bien escrito.').isEmail(),
     validarCampos
   ], httpLogin.recuperarPassword);

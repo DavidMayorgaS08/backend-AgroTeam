@@ -1,9 +1,11 @@
 import Administradores from '../models/administradores.js';
+import bcryptjs from 'bcryptjs';
 
 const httpadministradores = {
 
     async postadministradores (req,res) {
         const body = req.body;
+        body.password = bcryptjs.hashSync(body.password, 10);
         try {
             const administradores = await Administradores.create (body);
             res.json({administradores});
@@ -16,6 +18,9 @@ const httpadministradores = {
     async putadministradores (req, res){
         const _id = req.params.id;
         const body = req.body;
+        if(body.password){
+            body.password = bcryptjs.hashSync(body.password, 10);
+        }
         try{
             const administradores = await Administradores.findByIdAndUpdate(_id, body, {new: true});
             res.json(administradores);

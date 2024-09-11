@@ -32,23 +32,6 @@ const httpLogin = {
         }
     }
   },
-
-  recuperarPassword: async (req, res) => {
-    const { email } = req.body;
-    try {
-      const user = await Administradores.findOne({ email });
-      if (!user) {
-        return res.status(404).json({ msg: "Administrador no encontrado" });
-      }
-
-      const token = await generarJWT(user._id);
-
-      res.json({ msg: "Correo de recuperación enviado" });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ msg: "Error interno del servidor" });
-    }
-  },
 };
 
 export default httpLogin;

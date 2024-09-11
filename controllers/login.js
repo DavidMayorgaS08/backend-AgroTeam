@@ -1,5 +1,5 @@
 import Administradores from '../models/administradores.js';
-import bcrypt from 'bcryptjs';
+import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const httpLogin = {
@@ -16,7 +16,7 @@ const httpLogin = {
                 return res.status(400).json({ message: 'Usuario inactivo' });
             }
             // verificar la contraseña
-            const validarPassword = bcrypt.compare(password, admin.password);
+            const validarPassword = bcryptjs.compare(password, admin.password);
             if (!validarPassword) {
                 return res.status(400).json({ message: 'Contraseña incorrecta' });
             }

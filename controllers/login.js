@@ -31,7 +31,6 @@ const httpLogin = {
             res.status(500).json({ message: 'Error al iniciar sesión' });
         }
     }
-  },
 };
 
 export default httpLogin;

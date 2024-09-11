@@ -3,19 +3,19 @@ import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 const httpLogin = {
-  async postLogin(req, res) {
-    const { email, password } = req.body;
-    try {
-      const admin = await Administradores.findOne({ email });
-      if (!admin) {
-        return res.status(404).json({ message: "Usuario no encontrado" });
-      }
+    async postLogin(req, res) {
+        const { email, password } = req.body;
+        try {
+            const admin = await Administradores.findOne({ email });
+            if (!admin) {
+                return res.status(404).json({ message: "Usuario no encontrado" });
+            }
             // verificar si el usuario esta activo
             if (admin.estado === 0) {
                 return res.status(400).json({ message: 'Usuario inactivo' });
             }
             // verificar la contraseña
-            const validarPassword = bcryptjs.compare(password, admin.password);
+            const validarPassword = await bcryptjs.compare(password, admin.password);
             if (!validarPassword) {
                 return res.status(400).json({ message: 'Contraseña incorrecta' });
             }

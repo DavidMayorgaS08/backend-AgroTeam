@@ -31,15 +31,15 @@ router.get("/listar/inactivos",[
 
 router.post("/",[
     validarJWT,
-    check("id_proveedor", "El id del proveedor es obligatorio").not().isEmpty(),
-    check("id_proveedor").custom(insumosHelper.validarIdProveedor),
+    check("id_finca", "El id de la finca es obligatorio").not().isEmpty(),
+    check("id_finca").custom(insumosHelper.validarIdFinca),
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
+    check("registroICA", "El registro ICA es obligatorio").not().isEmpty(),
+    check("registroInvima", "El registro INVIMA es obligatorio").not().isEmpty(),
     check("relacionNPK", "La relación NPK es obligatoria").not().isEmpty(),
     check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
     check("unidad", "La unidad es obligatoria").not().isEmpty(),
-    check("responsable", "El responsable es obligatorio").not().isEmpty(),
     check("observaciones", "Las observaciones son obligatorias").not().isEmpty(),
-    check("total", "El total es obligatorio").not().isEmpty(),
     check("estado", "El estado debe ser un número").isNumeric(),
     validarCampos
 ], httpInsumos.postInsumos);
@@ -48,15 +48,15 @@ router.put("/:id",[
     validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(insumosHelper.validarId),
-    check("id_proveedor", "El id del proveedor es obligatorio").not().isEmpty(),
-    check("id_proveedor").custom(insumosHelper.validarIdProveedor),
+    check("id_finca", "El id de la finca es obligatorio").not().isEmpty(),
+    check("id_finca").custom(insumosHelper.validarIdFinca),
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
+    check("registroICA", "El registro ICA es obligatorio").not().isEmpty(),
+    check("registroInvima", "El registro INVIMA es obligatorio").not().isEmpty(),
     check("relacionNPK", "La relación NPK es obligatoria").not().isEmpty(),
     check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
     check("unidad", "La unidad es obligatoria").not().isEmpty(),
-    check("responsable", "El responsable es obligatorio").not().isEmpty(),
     check("observaciones", "Las observaciones son obligatorias").not().isEmpty(),
-    check("total", "El total es obligatorio").not().isEmpty(),
     check("estado", "El estado debe ser un número").isNumeric(),
     validarCampos
 ], httpInsumos.putInsumos);

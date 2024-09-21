@@ -1,13 +1,21 @@
 import Gastos from '../models/gastos.js';
+import Fincas from '../models/fincas.js';
 import Insumos from '../models/insumos.js';
 import Semillas from '../models/semillas.js';
-import Mantenimientos from '../models/mantenimientos.js';
+import Proveedores from '../models/proveedores.js';
 
 const gastosHelper = {
     validarId: async (id) => {
         const gasto = await Gastos.findById(id);
         if (!gasto) {
             throw new Error(`El id ${id} no existe`);
+        }
+    },
+
+    validarIdFinca: async (id_finca) => {
+        const finca = await Fincas.findById(id_finca);
+        if (!finca) {
+            throw new Error(`El id de finca ${id_finca} no existe`);
         }
     },
 
@@ -25,10 +33,10 @@ const gastosHelper = {
         }
     },
 
-    validarIdMantenimiento: async (id_mantenimiento) => {
-        const mantenimiento = await Mantenimientos.findById(id_mantenimiento);
-        if (!mantenimiento) {
-            throw new Error(`El id de mantenimiento ${id_mantenimiento} no existe`);
+    validarIdProveedor: async (id_proveedor) => {
+        const proveedor = await Proveedores.findById(id_proveedor);
+        if (!proveedor) {
+            throw new Error(`El id de proveedor ${id_proveedor} no existe`);
         }
     }
 };

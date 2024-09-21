@@ -1,7 +1,7 @@
 import siembras from "../models/siembras.js";
 import cultivos from "../models/cultivos.js";
 import empleados from "../models/empleados.js";
-import inventario from "../models/inventarios.js";
+import semillas from "../models/semillas.js";
 
 const siembrasHelper = {
     validarId: async (id) => {
@@ -22,10 +22,10 @@ const siembrasHelper = {
             throw new Error('El id_empleado no existe');
         }
     },
-    validarIdInventario: async (id) => {
-        const inventarios = await inventario.findById(id);
-        if (!inventarios) {
-            throw new Error('El id_inventario no existe');
+    validarIdSemilla: async (id) => {
+        const semilla = await semillas.findById(id);
+        if (!semilla) {
+            throw new Error('El id_semilla no existe');
         }
     }
 }

@@ -29,11 +29,6 @@ router.get("/listar/inactivos",[
     validarCampos
 ], httpParcelas.getParcelasInactivas);
 
-// router.get("listar/por/:cultivoActual",[
-//     validarJWT,
-//     validarCampos
-// ], httpParcelas.getParcelasPorTipoCultivo);
-
 router.get("fechas/:fecha1/:fecha2",[
     validarJWT,
     validarCampos
@@ -51,7 +46,6 @@ router.post("/",[
     check("id_finca", "El id de la finca es obligatorio").not().isEmpty(),
     check("id_finca", "No es un id válido").isMongoId(),
     check("id_finca").custom(parcelasHelper.validarIdFinca),
-    check("fecha_Creacion", "La fecha de creación es obligatoria").not().isEmpty(),
     check("estado", "El estado es obligatorio").not().isEmpty(),
     validarCampos
 ], httpParcelas.postParcelas);
@@ -70,7 +64,6 @@ router.put("/:id",[
     check("id_finca", "El id de la finca es obligatorio").not().isEmpty(),
     check("id_finca", "No es un id válido").isMongoId(),
     check("id_finca").custom(parcelasHelper.validarIdFinca),
-    check("fecha_Creacion", "La fecha de creación es obligatoria").not().isEmpty(),
     check("estado", "El estado es obligatorio").not().isEmpty(),
     validarCampos
 ], httpParcelas.putParcelas);

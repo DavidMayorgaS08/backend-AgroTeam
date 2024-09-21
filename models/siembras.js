@@ -7,7 +7,8 @@ const SiembrasSchema = new mongoose.Schema({
     fechaCosecha: {type: Date, required: true},
     transplante: {type: String, required: true},
     cultivoAnterior: {type: String, required: true},
-    id_inventario: {type: mongoose.Schema.Types.ObjectId, ref: 'Inventarios', required: true},
+    cantidad: {type: Number, required: true},
+    id_semilla: {type: mongoose.Schema.Types.ObjectId, ref: 'Semillas', required: true},
     estado: {type: Number, required: true}
 });
 

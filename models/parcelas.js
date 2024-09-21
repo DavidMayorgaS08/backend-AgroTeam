@@ -9,7 +9,6 @@ const ParcelasSchema = new mongoose.Schema({
     area: {type: Number, required: true},
     asistenteTecnico: {type: String, required: true},
     id_finca: {type: mongoose.Schema.Types.ObjectId, ref: 'Fincas', required: true},
-    fecha_Creacion: {type: Date, required: true, default: Date.now},
     estado: {type: Number, required: true}
 });
 

@@ -8,7 +8,7 @@ const FertilizacionesSchema = new mongoose.Schema({
     tipo: {type: String, required: true}, // antes, despues de siembra
     nombreFertilizante: {type: String, required: true},
     cantidad: {type: Number, required: true},
-    id_inventario: {type: mongoose.Schema.Types.ObjectId, ref: 'Inventarios', required: true},
+    id_insumo: {type: mongoose.Schema.Types.ObjectId, ref: 'Insumos', required: true},
     estado: {type: Number, required: true}
 });
 

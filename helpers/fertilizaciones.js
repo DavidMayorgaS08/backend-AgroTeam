@@ -1,7 +1,7 @@
 import Fertilizaciones from '../models/fertilizaciones.js';
 import Cultivos from '../models/cultivos.js';
 import Empleados from '../models/empleados.js';
-import Inventarios from '../models/inventarios.js';
+import Insumos from '../models/insumos.js';
 
 const fertilizacionesHelper = {
     validarId: async (id) => {
@@ -25,10 +25,10 @@ const fertilizacionesHelper = {
         }
     },
 
-    validarIdInventario: async (id_inventario) => {
-        const inventario = await Inventarios.findById(id_inventario);
-        if (!inventario) {
-            throw new Error(`El id de inventario ${id_inventario} no existe`);
+    validarIdInsumo: async (id_insumo) => {
+        const insumo = await Insumos.findById(id_insumo);
+        if (!insumo) {
+            throw new Error(`El id de insumo ${id_insumo} no existe`);
         }
     }
 }

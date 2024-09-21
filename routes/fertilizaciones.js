@@ -30,8 +30,8 @@ router.post('/', [
     check('tipo', 'El tipo es obligatorio').not().isEmpty(),
     check('nombreFertilizante', 'El nombre del fertilizante es obligatorio').not().isEmpty(),
     check('cantidad', 'La cantidad es obligatoria').not().isEmpty().isNumeric(),
-    check('id_inventario', 'El id_inventario es obligatorio').not().isEmpty(),
-    check('id_inventario').custom(fertilizacionesHelper.validarIdInventario),
+    check("id_insumo", "El id_insumo es obligatorio").not().isEmpty(),
+    check("id_insumo").custom(fertilizacionesHelper.validarIdInsumo),
     check('estado', 'El estado es obligatorio').not().isEmpty().isNumeric(),
     validarCampos
 ], httpFertilizaciones.postFertilizaciones);
@@ -49,8 +49,8 @@ router.put('/:id', [
     check('tipo', 'El tipo es obligatorio').not().isEmpty(),
     check('nombreFertilizante', 'El nombre del fertilizante es obligatorio').not().isEmpty(),
     check('cantidad', 'La cantidad es obligatoria').not().isEmpty().isNumeric(),
-    check('id_inventario', 'El id_inventario es obligatorio').not().isEmpty(),
-    check('id_inventario').custom(fertilizacionesHelper.validarIdInventario),
+    check("id_insumo", "El id_insumo es obligatorio").not().isEmpty(),
+    check("id_insumo").custom(fertilizacionesHelper.validarIdInsumo),
     check('estado', 'El estado es obligatorio').not().isEmpty().isNumeric(),
     validarCampos
 ], httpFertilizaciones.putFertilizaciones);

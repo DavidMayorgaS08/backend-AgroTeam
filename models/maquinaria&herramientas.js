@@ -8,6 +8,19 @@ const MaquinariaHerramientasSchema = new mongoose.Schema({
     observaciones: {type: String, required: true},
     cantidad: {type: Number, required: true},
     total: {type: Number, required: true},
+    mantenimiento:[{
+        fecha: {type: Date, required: true},
+        responsable: {type: String, required: true},
+        observaciones: {type: String, required: true},
+        precio: {type: Number, required: true}
+    }],
+    desinfeccion:[{
+        fecha: {type: Date, required: true},
+        productos: [{
+            id_insumo: {type: mongoose.Schema.Types.ObjectId, ref: 'Insumos', required: true},
+        }],
+        id_empleado: {type: mongoose.Schema.Types.ObjectId, ref: 'Empleados', required: true},
+    }],
     estado: {type: Number, required: true}
 });
 

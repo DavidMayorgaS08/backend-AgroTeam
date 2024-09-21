@@ -31,8 +31,8 @@ router.get('/listar/inactivos', [
 
 router.post('/', [
     validarJWT,
-    check('id_proceso', 'El id del proceso es obligatorio').not().isEmpty(),
-    check('id_proceso').custom(elaboracionSustratosHelper.validarIdProceso),
+    check('id_cultivo', 'El id del cultivo es obligatorio').not().isEmpty(),
+    check('id_cultivo').custom(elaboracionSustratosHelper.validarIdCultivo),
     check('fecha', 'La fecha es obligatoria').not().isEmpty(),
     check('productoComercial', 'El producto comercial es obligatorio').not().isEmpty(),
     check('ingredienteActivo', 'El ingrediente activo es obligatorio').not().isEmpty(),
@@ -49,8 +49,8 @@ router.put('/:id', [
     validarJWT,
     check('id', 'No es un id válido').isMongoId(),
     check('id').custom(elaboracionSustratosHelper.validarId),
-    check('id_proceso', 'El id del proceso es obligatorio').not().isEmpty(),
-    check('id_proceso').custom(elaboracionSustratosHelper.validarIdProceso),
+    check('id_cultivo', 'El id del cultivo es obligatorio').not().isEmpty(),
+    check('id_cultivo').custom(elaboracionSustratosHelper.validarIdCultivo),
     check('fecha', 'La fecha es obligatoria').not().isEmpty(),
     check('productoComercial', 'El producto comercial es obligatorio').not().isEmpty(),
     check('ingredienteActivo', 'El ingrediente activo es obligatorio').not().isEmpty(),

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const ElaboracionSustratosSchema = new mongoose.Schema({
-    id_proceso: {type: mongoose.Schema.Types.ObjectId, ref: 'Procesos', required: true},
+    id_cultivo: {type: mongoose.Schema.Types.ObjectId, ref: 'Cultivos', required: true},
     fecha: {type: Date, required: true},
     productoComercial: {type: String, required: true},
     ingredienteActivo: {type: String, required: true},

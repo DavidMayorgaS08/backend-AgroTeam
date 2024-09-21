@@ -1,5 +1,5 @@
 import ElaboracionSustratos from '../models/elaboracion sustratos.js';
-import Procesos from '../models/procesos.js';
+import Cultivos from '../models/cultivos.js';
 import Empleados from '../models/empleados.js'
 
 const elaboracionSustratosHelper = {
@@ -9,10 +9,10 @@ const elaboracionSustratosHelper = {
             throw new Error('El id de la elaboracion de sustratos no existe');
         }
     },
-    validarIdProceso: async (id) => {
-        const existeProceso = await Procesos.findById(id);
-        if (!existeProceso) {
-            throw new Error('El id del proceso no existe');
+    validarIdCultivo: async (id) => {
+        const existeCultivo = await Cultivos.findById(id);
+        if (!existeCultivo) {
+            throw new Error('El id del cultivo no existe');
         }
     },
     validarIdEmpleado: async (id) => {

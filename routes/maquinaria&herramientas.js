@@ -39,6 +39,15 @@ router.post("/",[
     check("observaciones", "Las observaciones son obligatorias").not().isEmpty(),
     check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
     check("total", "El total es obligatorio").not().isEmpty(),
+    check("mantenimiento.*.fecha", "La fecha de mantenimiento es obligatoria").not().isEmpty(),
+    check("mantenimiento.*.responsable", "El responsable del mantenimiento es obligatorio").not().isEmpty(),
+    check("mantenimiento.*.observaciones", "Las observaciones del mantenimiento son obligatorias").not().isEmpty(),
+    check("mantenimiento.*.precio", "El precio del mantenimiento es obligatorio").not().isEmpty(),
+    check("desinfeccion.*.fecha", "La fecha de desinfección es obligatoria").not().isEmpty(),
+    check("desinfeccion.*.productos.*.id_insumo", "El id del insumo es obligatorio").not().isEmpty(),
+    check("desinfeccion.*.productos.*.id_insumo").custom(maquinariaHerramientasHelper.validarIdInsumo),
+    check("desinfeccion.*.id_empleado", "El id del empleado es obligatorio").not().isEmpty(),
+    check("desinfeccion.*.id_empleado").custom(maquinariaHerramientasHelper.validarIdEmpleado),
     check("estado", "El estado debe ser un número").isNumeric(),
     validarCampos
 ], httpMaquinariaHerramientas.postMaquinariaHerramientas);
@@ -55,6 +64,15 @@ router.put("/:id",[
     check("observaciones", "Las observaciones son obligatorias").not().isEmpty(),
     check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
     check("total", "El total es obligatorio").not().isEmpty(),
+    check("mantenimiento.*.fecha", "La fecha de mantenimiento es obligatoria").not().isEmpty(),
+    check("mantenimiento.*.responsable", "El responsable del mantenimiento es obligatorio").not().isEmpty(),
+    check("mantenimiento.*.observaciones", "Las observaciones del mantenimiento son obligatorias").not().isEmpty(),
+    check("mantenimiento.*.precio", "El precio del mantenimiento es obligatorio").not().isEmpty(),
+    check("desinfeccion.*.fecha", "La fecha de desinfección es obligatoria").not().isEmpty(),
+    check("desinfeccion.*.productos.*.id_insumo", "El id del insumo es obligatorio").not().isEmpty(),
+    check("desinfeccion.*.productos.*.id_insumo").custom(maquinariaHerramientasHelper.validarIdInsumo),
+    check("desinfeccion.*.id_empleado", "El id del empleado es obligatorio").not().isEmpty(),
+    check("desinfeccion.*.id_empleado").custom(maquinariaHerramientasHelper.validarIdEmpleado),
     check("estado", "El estado debe ser un número").isNumeric(),
     validarCampos
 ], httpMaquinariaHerramientas.putMaquinariaHerramientas);

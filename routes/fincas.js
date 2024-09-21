@@ -52,10 +52,14 @@ router.put('/:id', [
     check('rut', 'El RUT es obligatorio').not().isEmpty(),
     check('direccion', 'La dirección es obligatoria').not().isEmpty(),
     check('ubicacionGeografica', 'La ubicación geográfica es obligatoria').not().isEmpty(),
-    check('limitesPredios', 'Los límites de predios son obligatorios').not().isEmpty(),
     check('area', 'El área debe ser un número válido').isNumeric(),
     check('ciudad', 'La ciudad es obligatoria').not().isEmpty(),
+    check("documentos", "Los documentos son obligatorios").not().isEmpty(),
     check('departamento', 'El departamento es obligatorio').not().isEmpty(),
+    check('limites.*.norte', 'El límite norte es obligatorio').not().isEmpty(),
+    check('limites.*.sur', 'El límite sur es obligatorio').not().isEmpty(),
+    check('limites.*.este', 'El límite este es obligatorio').not().isEmpty(),
+    check('limites.*.oeste', 'El límite oeste es obligatorio').not().isEmpty(),
     check('estado', 'El estado debe ser un número válido').isNumeric(),
     validarCampos
 ], httpFincas.putFincas);
@@ -68,10 +72,14 @@ router.post('/', [
     check('rut', 'El RUT es obligatorio').not().isEmpty(),
     check('direccion', 'La dirección es obligatoria').not().isEmpty(),
     check('ubicacionGeografica', 'La ubicación geográfica es obligatoria').not().isEmpty(),
-    check('limitesPredios', 'Los límites de predios son obligatorios').not().isEmpty(),
     check('area', 'El área debe ser un número válido').isNumeric(),
     check('ciudad', 'La ciudad es obligatoria').not().isEmpty(),
+    check("documentos", "Los documentos son obligatorios").isEmpty(),
     check('departamento', 'El departamento es obligatorio').not().isEmpty(),
+    check('limites.*.norte', 'El límite norte es obligatorio').not().isEmpty(),
+    check('limites.*.sur', 'El límite sur es obligatorio').not().isEmpty(),
+    check('limites.*.este', 'El límite este es obligatorio').not().isEmpty(),
+    check('limites.*.oeste', 'El límite oeste es obligatorio').not().isEmpty(),
     check('estado', 'El estado debe ser un número válido').isNumeric(),
     validarCampos
 ], httpFincas.postFincas);

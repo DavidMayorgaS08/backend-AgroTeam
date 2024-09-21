@@ -1,5 +1,5 @@
 import Insumos from '../models/insumos.js';
-import Proveedores from '../models/proveedores.js';
+import fincas from '../models/fincas.js';
 
 const insumosHelper = {
     validarId: async (id) => {
@@ -8,10 +8,11 @@ const insumosHelper = {
             throw new Error('El id del insumo no existe');
         }
     },
-    validarIdProveedor: async (id) => {
-        const existeProveedor = await Proveedores.findById(id);
-        if (!existeProveedor) {
-            throw new Error('El id del proveedor no existe');
+
+    validarIdFinca: async (id_finca) => {
+        const existeFinca = await fincas.findById(id_finca);
+        if (!existeFinca) {
+            throw new Error('El id de la finca no existe');
         }
     }
 };

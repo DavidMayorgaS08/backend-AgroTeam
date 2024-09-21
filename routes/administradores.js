@@ -30,7 +30,7 @@ router.get("/listar/inactivos",[
 ], httpadministradores.getadministradoresInactivos);
 
 router.post("/",[
-    validarJWT,
+    //validarJWT,
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("direccion", "La dirección es obligatoria").not().isEmpty(),
     check("telefono", "El teléfono es obligatorio").not().isEmpty(),

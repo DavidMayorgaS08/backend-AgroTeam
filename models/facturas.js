@@ -4,7 +4,7 @@ const FacturaSchema = new mongoose.Schema({
     fecha: {type: Date, required: true},
     valor: {type: Number, required: true},
     detalle:[{
-        id_inventario: {type: mongoose.Schema.Types.ObjectId, ref: 'Inventarios', required: true},
+        id_producto: {type: mongoose.Schema.Types.ObjectId, ref: 'Productos', required: true},
         cantidad: {type: Number, required: true},
         nombreProducto: {type: String, required: true},
         subTotal: {type: Number, required: true},

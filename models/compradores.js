@@ -8,7 +8,7 @@ const CompradoresSchema = new mongoose.Schema({
     telefono: {type: String, required: true},
     cantidad: {type: Number, required: true},
     NroGuiaTransporte: {type: String, required: true},
-    NroLoteComecial: {type: String, required: true},
+    valor: {type: Number, required: true},
     estado: {type: Number, required: true}
 });
 

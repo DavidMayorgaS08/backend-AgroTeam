@@ -12,6 +12,7 @@ const FacturaSchema = new mongoose.Schema({
         total: {type: Number, required: true},
     }],
     id_comprador: {type: mongoose.Schema.Types.ObjectId, ref: 'Compradores', required: true},
+    NroLoteComercial: {type: String, required: true},
     estado: {type: Number, required: true}
 });
 

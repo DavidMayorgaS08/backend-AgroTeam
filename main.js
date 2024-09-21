@@ -15,9 +15,7 @@ import fertilizantes from "./routes/fertilizaciones.js"
 import fincas from "./routes/fincas.js"
 import gastos from "./routes/gastos.js"
 import insumos from "./routes/insumos.js"
-import inventarios from "./routes/inventarios.js"
 import login from "./routes/login.js"
-import mantenimientos from "./routes/mantenimientos.js"
 import maquinaria_herramientas from "./routes/maquinaria&herramientas.js"
 import nominas from "./routes/nominas.js"
 import parcelas from "./routes/parcelas.js"
@@ -49,9 +47,7 @@ app.use("/api/fertilizantes", fertilizantes)
 app.use("/api/fincas", fincas)
 app.use("/api/gastos", gastos)
 app.use("/api/insumos", insumos)
-app.use("/api/inventarios", inventarios)
 app.use("/api/login", login)
-app.use("/api/mantenimientos", mantenimientos)
 app.use("/api/maquinaria_herramientas", maquinaria_herramientas)
 app.use("/api/nominas", nominas)
 app.use("/api/parcelas", parcelas)

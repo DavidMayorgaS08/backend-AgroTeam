@@ -1,5 +1,5 @@
 import semillas from "../models/semillas.js";
-import proveedores from "../models/proveedores.js";
+import Fincas from "../models/fincas.js";
 
 const semillasHelper = {
     validarId: async (id) => {
@@ -8,10 +8,11 @@ const semillasHelper = {
             throw new Error(`El id no existe ${id}`);
         }
     },
-    validarIdProveedor: async (id) => {
-        const proveedor = await proveedores.findById(id);
-        if (!proveedor) {
-            throw new Error("El id del proveedor no existe");
+    
+    validarIdFinca: async (id) => {
+        const existe = await Fincas.findById(id);
+        if (!existe) {
+            throw new Error(`El id de la finca no existe ${id}`);
         }
     }
 }

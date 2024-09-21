@@ -31,6 +31,8 @@ router.get("/listar/inactivos",[
 
 router.post("/",[
     validarJWT,
+    check("id_finca", "El id de la finca es obligatorio").not().isEmpty(),
+    check("id_finca").custom(proveedoresHelper.validarIdFinca),
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("direccion", "La dirección es obligatoria").not().isEmpty(),
     check("telefono", "El teléfono es obligatorio").not().isEmpty(),
@@ -43,6 +45,8 @@ router.put ("/:id",[
     validarJWT,
     check("id", "No es un id válido").isMongoId(),
     check("id").custom(proveedoresHelper.validarId),
+    check("id_finca", "El id de la finca es obligatorio").not().isEmpty(),
+    check("id_finca").custom(proveedoresHelper.validarIdFinca),
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
     check("direccion", "La dirección es obligatoria").not().isEmpty(),
     check("telefono", "El teléfono es obligatorio").not().isEmpty(),

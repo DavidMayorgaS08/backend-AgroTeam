@@ -63,6 +63,7 @@ router.put("/:id", [
     check("detalle.*.subTotal", "El subTotal es obligatorio y debe ser un número").isNumeric(),
     check("detalle.*.iva", "El IVA es obligatorio y debe ser un número").isNumeric(),
     check("detalle.*.total", "El total es obligatorio y debe ser un número").isNumeric(),
+    check("NroLoteComercial", "El número de lote comercial es obligatorio").not().isEmpty(),
     check("estado", "El estado debe ser un número").isNumeric(),
     validarCampos
 ], httpFacturas.putFacturas);
@@ -78,6 +79,7 @@ router.post("/", [
     check("detalle.*.subTotal", "El subTotal es obligatorio y debe ser un número").isNumeric(),
     check("detalle.*.iva", "El IVA es obligatorio y debe ser un número").isNumeric(),
     check("detalle.*.total", "El total es obligatorio y debe ser un número").isNumeric(),
+    check("NroLoteComercial", "El número de lote comercial es obligatorio").not().isEmpty(),
     check("estado", "El estado debe ser un número").isNumeric(),
     validarCampos
 ], httpFacturas.postFacturas);

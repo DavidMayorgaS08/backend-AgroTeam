@@ -62,6 +62,7 @@ router.put("/:id", [
     check("tipo", "El tipo es obligatorio").not().isEmpty(),
     check("ingredienteActivo", "El ingrediente activo es obligatorio").not().isEmpty(),
     check("dosis", "La dosis es obligatoria y debe ser un número").isNumeric(),
+    check("id_operario").custom(controlPlagasHelper.validarIdEmpleado),
     check("observaciones", "Las observaciones son obligatorias").not().isEmpty(),
     check('estado', 'El estado debe ser un número').isNumeric(),
     validarCampos
@@ -77,6 +78,7 @@ router.post("/", [
     check("tipo", "El tipo es obligatorio").not().isEmpty(),
     check("ingredienteActivo", "El ingrediente activo es obligatorio").not().isEmpty(),
     check("dosis", "La dosis es obligatoria y debe ser un número").isNumeric(),
+    check("id_operario").custom(controlPlagasHelper.validarIdEmpleado),
     check("observaciones", "Las observaciones son obligatorias").not().isEmpty(),
     check('estado', 'El estado debe ser un número').isNumeric(),
     validarCampos

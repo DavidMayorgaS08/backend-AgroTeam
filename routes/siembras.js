@@ -43,9 +43,10 @@ router.post("/",[
     check("fechaCosecha", "La fecha de cosecha no es válida").isDate(),
     check("transplante", "El transplante es obligatorio").not().isEmpty(),
     check("cultivoAnterior", "El cultivo anterior es obligatorio").not().isEmpty(),
-    check("id_inventario", "El id_inventario es obligatorio").not().isEmpty(),
-    check("id_inventario", "No es un id válido").isMongoId(),
-    check("id_inventario").custom(siembrasHelper.validarIdInventario),
+    check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
+    check("cantidad", "La cantidad debe ser un número").isNumeric(),
+    check("id_semilla", "El id_semilla es obligatorio").not().isEmpty(),
+    check("id_semilla", "No es un id válido").isMongoId(),
     check("estado", "El estado debe ser un número").isNumeric(),
     validarCampos
 ], httpSiembras.postSiembras);
@@ -66,9 +67,10 @@ router.put("/:id",[
     check("fechaCosecha", "La fecha de cosecha no es válida").isDate(),
     check("transplante", "El transplante es obligatorio").not().isEmpty(),
     check("cultivoAnterior", "El cultivo anterior es obligatorio").not().isEmpty(),
-    check("id_inventario", "El id_inventario es obligatorio").not().isEmpty(),
-    check("id_inventario", "No es un id válido").isMongoId(),
-    check("id_inventario").custom(siembrasHelper.validarIdInventario),
+    check("cantidad", "La cantidad es obligatoria").not().isEmpty(),
+    check("cantidad", "La cantidad debe ser un número").isNumeric(),
+    check("id_semilla", "El id_semilla es obligatorio").not().isEmpty(),
+    check("id_semilla", "No es un id válido").isMongoId(),
     check("estado", "El estado debe ser un número").isNumeric(),
     validarCampos
 ], httpSiembras.putSiembras);

@@ -39,7 +39,7 @@ router.post('/', [
     check('telefono', 'El teléfono es obligatorio').not().isEmpty(),
     check('cantidad', 'La cantidad es obligatoria').not().isEmpty(),
     check('NroGuiaTransporte', 'El número de guía de transporte es obligatorio').not().isEmpty(),
-    check('NroLoteComecial', 'El número de lote comercial es obligatorio').not().isEmpty(),
+    check('valor', 'El valor es obligatorio').not().isEmpty(),
     check('estado', 'El estado debe ser un número').isNumeric(),
     validarCampos
 ], httpCompradores.postCompradores);
@@ -56,7 +56,7 @@ router.put('/:id', [
     check('telefono', 'El teléfono es obligatorio').not().isEmpty(),
     check('cantidad', 'La cantidad es obligatoria').not().isEmpty(),
     check('NroGuiaTransporte', 'El número de guía de transporte es obligatorio').not().isEmpty(),
-    check('NroLoteComecial', 'El número de lote comercial es obligatorio').not().isEmpty(),
+    check('valor', 'El valor es obligatorio').not().isEmpty(),
     check('estado', 'El estado debe ser un número').isNumeric(),
     validarCampos
 ], httpCompradores.putCompradores);

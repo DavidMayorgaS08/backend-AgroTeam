@@ -1,6 +1,6 @@
 import Factura from '../models/facturas.js';
 import Compradores from '../models/compradores.js';
-import Productos from '../models/productos.js';
+import Insumos from '../models/insumos.js';
 
 const facturasHelper = {
     validarId: async (id) => {
@@ -9,10 +9,10 @@ const facturasHelper = {
             throw new Error(`El id ${id} no existe`);
         }
     },
-    validarIdProducto: async (id_producto) => {
-        const producto = await Productos.findById(id_producto);
-        if (!producto) {
-            throw new Error(`El id de producto ${id_producto} no existe`);
+    validarIdInsumo: async (id_insumo) => {
+        const insumo = await Insumos.findById(id_insumo);
+        if (!insumo) {
+            throw new Error(`El id de insumo ${id_insumo} no existe`);
         }
     },
     validarIdComprador: async (id_comprador) => {

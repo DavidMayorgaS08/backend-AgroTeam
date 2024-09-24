@@ -5,10 +5,10 @@ import { check } from "express-validator";
 
 const router = Router();
 
-router.post("/",[
+router.post("/forgot_password",[
     check("email", "El correo electrónico es obligatorio").isEmail(),
     validarCampos
 ], restablecerContrasena);
-router.post("/:token", restablecerContrasenaToken);
+router.post("/reset_password/:token", restablecerContrasenaToken);
 
 export default router;

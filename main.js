@@ -59,7 +59,7 @@ app.use("/api/proveedores", proveedores)
 app.use("/api/riegos", riegos)
 app.use("/api/semillas", semillas)
 app.use("/api/siembras", siembras)
-app.use("/api/restablecerContraseña", restablecerContraseña)
+app.use("/api/restablecer", restablecerContraseña)
 
 app.listen(process.env.PORT, function () {
     console.log(`Servidor escuchando en el puerto ${process.env.PORT}`);

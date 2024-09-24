@@ -1,5 +1,3 @@
-// HOLA CHICOS SOY FELIPE
-
 import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
 import nodemailer from 'nodemailer';

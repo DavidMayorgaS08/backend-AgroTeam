@@ -26,6 +26,7 @@ import proveedores from "./routes/proveedores.js"
 import riegos from "./routes/riegos.js"
 import semillas from "./routes/semillas.js"
 import siembras from "./routes/siembras.js"
+import restablecerContraseña from "./routes/restablecerContraseña.js"
 
 const app = express();
 app.use(cors(
@@ -58,6 +59,7 @@ app.use("/api/proveedores", proveedores)
 app.use("/api/riegos", riegos)
 app.use("/api/semillas", semillas)
 app.use("/api/siembras", siembras)
+app.use("/api/restablecerContraseña", restablecerContraseña)
 
 app.listen(process.env.PORT, function () {
     console.log(`Servidor escuchando en el puerto ${process.env.PORT}`);

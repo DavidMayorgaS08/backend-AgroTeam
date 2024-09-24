@@ -3,7 +3,7 @@ import { restablecerContrasena, restablecerContrasenaToken } from "../controller
 
 const router = Router();
 
-router.post("/restablecerContrasena", restablecerContrasena);
-router.post("/recuperarContrasena/:token", restablecerContrasenaToken);
+router.post("/", restablecerContrasena);
+router.post("/:token", restablecerContrasenaToken);
 
 export default router;

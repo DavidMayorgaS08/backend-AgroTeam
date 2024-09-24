@@ -5,7 +5,7 @@ import { check } from "express-validator";
 
 const router = Router();
 
-router.post("/forgot_password",[
+router.post("/",[
     check("email", "El correo electrónico es obligatorio").isEmail(),
     validarCampos
 ], restablecerContrasena);

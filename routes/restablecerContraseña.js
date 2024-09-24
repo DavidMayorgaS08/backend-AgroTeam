@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { restablecerContrasena, restablecerContrasenaToken } from "../controllers/restablecerContraseña.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
+import { check } from "express-validator";
 
 const router = Router();
 

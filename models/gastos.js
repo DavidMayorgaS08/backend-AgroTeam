@@ -7,7 +7,7 @@ const GastosSchema = new mongoose.Schema({
     NroFactura: {type: String, required: true},
     descripcion: {type: String, required: true},
     total: {type: Number, required: true},
-    iinsumos: [
+    insumos: [
         {
             id_proveedor: {type: mongoose.Schema.Types.ObjectId, ref: 'Proveedores', required: true},
             id_insumo: {type: mongoose.Schema.Types.ObjectId, ref: 'Insumos', required: true},

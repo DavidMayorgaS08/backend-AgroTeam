@@ -26,7 +26,7 @@ export const restablecerContrasena = async (req, res) => {
     admin.resetPasswordExpires = Date.now() + 3600000; // 1 hora
     await admin.save();
 
-    const resetUrl = `http://localhost:5173/reset-password/${token}`;
+    const resetUrl = `http://localhost:5173/#/reset-password/${token}`;
     const mailOptions = {
       to: admin.email,
       from: process.env.EMAIL_USER,

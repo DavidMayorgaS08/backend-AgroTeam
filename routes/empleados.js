@@ -34,7 +34,6 @@ router.post("/", [
     check("id_finca", "No es un id válido").isMongoId(),
     check("id_finca").custom(empleadosHelper.validarIdFinca),
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
-    check("correo", "El correo es obligatorio").not().isEmpty(),
     check("direccion", "La dirección es obligatoria").not().isEmpty(),
     check("telefono", "El teléfono es obligatorio").not().isEmpty(),
     check("estudios", "Los estudios son obligatorios").not().isEmpty(),
@@ -51,11 +50,11 @@ router.put("/:id",[
     check("id_finca", "No es un id válido").isMongoId(),
     check("id_finca").custom(empleadosHelper.validarIdFinca),
     check("nombre", "El nombre es obligatorio").not().isEmpty(),
-    check("correo", "El correo es obligatorio").not().isEmpty(),
     check("direccion", "La dirección es obligatoria").not().isEmpty(),
     check("telefono", "El teléfono es obligatorio").not().isEmpty(),
     check("estudios", "Los estudios son obligatorios").not().isEmpty(),
     check("descripcion", "La descripción es obligatoria").not().isEmpty(),
+    check("fechaContratacion", "La fecha de contratación es obligatoria").not().isEmpty(),
     check("estado", "El estado debe ser un número").isNumeric(),
     validarCampos
 ], httpEmpleados.putEmpleados);

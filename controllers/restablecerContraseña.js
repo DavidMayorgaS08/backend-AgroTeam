@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import Administradores from '../models/administradores.js';
 import dotenv from 'dotenv';
-import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
 
 dotenv.config();
 
@@ -21,10 +21,12 @@ export const restablecerContrasena = async (req, res) => {
       return res.status(404).json({ message: 'No existe una cuenta con ese correo electrónico' });
     }
 
-    const token = crypto.randomBytes(32).toString('hex');
-    admin.resetPasswordToken = token;
-    admin.resetPasswordExpires = Date.now() + 3600000; // 1 hora
-    await admin.save();
+    const token = jwt.sign({
+      id: admin._id,
+      nombre: admin.nombre,
+      email: admin.email,
+      rol: admin.rol
+    }, process.env.SECRETORPRIVATEKEY, { expiresIn: '1h' });
 
     const resetUrl = `http://localhost:5173/#/NuevaContrasena/${token}`;
     const mailOptions = {
@@ -39,38 +41,30 @@ export const restablecerContrasena = async (req, res) => {
       `
     };
 
-    transporter.sendMail(mailOptions, (err) => {
-      if (err) {
-        return res.status(500).json({ message: 'Error al enviar el correo electrónico' });
-      }
-      res.status(200).json({ message: 'Se ha enviado un enlace a tu correo electrónico' });
-    });
+    await transporter.sendMail(mailOptions);
+
+    res.json({ message: 'Se ha enviado un correo electrónico para restablecer tu contraseña' });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: 'Error al restablecer la contraseña' });
   }
-};
+}
 
-export const restablecerContrasenaToken = async (req, res) => {
-  const token = req.params.token;
-  const { newPassword, confirmNewPassword } = req.body;
+export const nuevaContrasena = async (req, res) => {
+  try {
+    const { token, password } = req.body;
+    const { id } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
 
-  if (newPassword !== confirmNewPassword) {
-    return res.status(400).json({ message: 'Las contraseñas no coinciden' });
+    const admin = await Administradores.findById(id);
+
+    if (!admin) {
+      return res.status(404).json({ message: 'No existe una cuenta con ese correo electrónico' });
+    }
+
+    admin.password = password;
+    await admin.save();
+
+    res.json({ message: 'Contraseña actualizada correctamente' });
+  } catch (error) {
+    res.status(500).json({ message: 'Error al restablecer la contraseña' });
   }
-
-  const admin = await Administradores.findOne({
-    resetPasswordToken: token,
-    resetPasswordExpires: { $gt: Date.now() }
-  });
-
-  if (!admin) {
-    return res.status(404).json({ message: 'El token es inválido o ha expirado' });
-  }
-
-  admin.password = newPassword;
-  admin.resetPasswordToken = undefined;
-  admin.resetPasswordExpires = undefined;
-  await admin.save();
-
-  res.status(200).json({ message: 'Contraseña restablecida correctamente' });
-};
+}

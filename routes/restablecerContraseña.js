@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { restablecerContrasena, restablecerContrasenaToken } from "../controllers/restablecerContraseña.js";
+import { restablecerContrasena, nuevaContrasena } from "../controllers/restablecerContraseña.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
 import { check } from "express-validator";
 
@@ -9,6 +9,6 @@ router.post("/",[
     check("email", "El correo electrónico es obligatorio").isEmail(),
     validarCampos
 ], restablecerContrasena);
-router.post("/reset_password/:token", restablecerContrasenaToken);
+router.post("/reset_password/:token", nuevaContrasena);
 
 export default router;
